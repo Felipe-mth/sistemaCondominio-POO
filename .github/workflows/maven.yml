@@ -13,7 +13,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    #função responsavel por apontar o arquivo padrão para executar os comandos
+    defaults:
+      run:
+         working-directory: sistema_condominio_poo
+         
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
