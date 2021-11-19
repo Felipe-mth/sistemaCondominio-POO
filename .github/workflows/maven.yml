@@ -5,9 +5,9 @@ name: ProjetoCondominio-CI/CD
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev, test]
   pull_request:
-    branches: [main]
+    branches: [main, dev, test]
 
 jobs:
   build:
@@ -26,26 +26,7 @@ jobs:
           distribution: "adopt"
           cache: maven
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
-
-  deploy-dev:
-    runs-on: ubuntu-latest
-    environment:
-      name: Dev
-    needs: build
-    steps:
-    - name: Run a one-line script
-      run: echo hello, world!!
-
-  deploy-test:
-    runs-on: ubuntu-latest
-    environment:
-      name: Test
-    needs: build
-    steps:
-    - name: Run a one-line script
-      run: echo hello, world!!
-      
+        run: mvn -B package --file pom.xml     
 
   deploy-main:
     runs-on: ubuntu-latest
@@ -55,4 +36,25 @@ jobs:
     steps:
     - name: Run a one-line script
       run: echo hello, world!!
+
+  deploy-test:
+      runs-on: ubuntu-latest
+      environment:
+        name: Test
+      needs: build
+      steps:
+      - name: Run a one-line script
+        run: echo hello, world!!
+        
+  deploy-dev:
+      runs-on: ubuntu-latest
+      environment:
+        name: Dev
+      needs: build
+      steps:
+      - name: Run a one-line script
+        run: echo hello, world!!
+      
+  
+
 
