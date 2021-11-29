@@ -4,7 +4,7 @@ package poo.sistema_condominio;
 public class Morador extends Pessoa {
 
     //private int id;
-    private Carro carro;
+    public Carro carro;
 
     public Morador(String cpf, String telefone, String nome) {
         super(cpf, telefone, nome);
@@ -16,8 +16,8 @@ public class Morador extends Pessoa {
     }
 
     //metodo responsavel por instaciar a variavel carro
-    public void setCarro(){
-        //this.carro = new Carro("a","c","d");
+    public void setCarro(Carro c){
+        this.carro = new Carro(c.getModelo(),c.getPlaca(),c.getVaga());
     }
 
     
