@@ -13,6 +13,40 @@ public class Produtos {
     private Date dataEntrega;
     private Date dataSaida;
 
+    Produtos(int i, int i0, Fornecedor f, int i1, String pentoprazol, int i2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+    
+    public int getId(){
+        return this.id;
+    }
+    
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+    public String getNome(){
+        return this.nome;
+    }
+    
+    public void setDataEntrega(Date data){
+        this.dataEntrega = data;
+    }
+    
+    public Date getDataEntrega(){
+        return this.dataEntrega;
+    }
+     public void setDataSaida(Date data){
+        this.dataSaida = data;
+    }
+    
+    public Date getDataSaida(){
+        return this.dataSaida;
+    }
+    
     public Produtos(Fornecedor fornecedor, double preco,String nome) {
         this.fornecedor = fornecedor;
         this.preco = preco;
