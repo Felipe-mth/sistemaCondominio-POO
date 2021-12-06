@@ -4,15 +4,15 @@ public class Apartamentos {
     private int nApartamento; 
     private int andar;
     private int bloco;
-    private Estacionamento estacionamento;
+    public Estacionamento estacionamento;
     private Morador morador;
     
-    public Apartamentos(Morador morador, int nApartamento, int andar, int bloco, Estacionamento estacionamento) {
+    public Apartamentos(Morador morador, int nApartamento, int andar, int bloco) {
         this.morador = morador;
         this.nApartamento = nApartamento;
         this.andar = andar;
         this.bloco =  bloco;
-        this.estacionamento = estacionamento;
+        estacionar(this.morador);
     }
 
     public Morador getMorador() {
@@ -55,7 +55,8 @@ public class Apartamentos {
         this.andar = andar;
     }
     
-    public void estacionar(Apartamentos morador, Apartamentos apartamento){
-
+    public void estacionar(Morador morador){
+        this.estacionamento = new Estacionamento(morador);
+        estacionamento.setReserva(true);
     }
 }
