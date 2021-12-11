@@ -1,7 +1,8 @@
 package Entidades;
 
 public class Carro {
-    private String placa;
+   
+    private String placa; //pode ser uma pk;
     private String vaga;
     private String modelo;
 
