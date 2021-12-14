@@ -1,8 +1,16 @@
 package Entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Pessoa")
 public class Pessoa {
-    private int  ID;//verificar esse aqui ja que o cpf pode ser um identificador
+
+    @Id
     private String CPF;
+
     private String telefone;
     private String nome;
     
@@ -10,16 +18,8 @@ public class Pessoa {
         this.CPF = cpf;
         this.telefone = telefone;
         this.nome = nome;
-        //this.ID = id;
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
 
     public String getCPF() {
         return CPF;

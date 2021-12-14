@@ -1,8 +1,20 @@
 package Entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Carro")
 public class Carro {
-   
+    
+    @Id
     private String placa; //pode ser uma pk;
+
+    @ManyToMany
+    private Morador morador;
+    
     private String vaga;
     private String modelo;
 

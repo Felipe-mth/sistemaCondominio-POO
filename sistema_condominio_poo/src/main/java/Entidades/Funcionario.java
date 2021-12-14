@@ -1,6 +1,17 @@
 package Entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Funcionario")
 public class Funcionario extends Pessoa  {
+
+    
+    @OneToOne
+    private Endereco endereco;
+
     private String cargo;
     private double salario;
     private String turno;
