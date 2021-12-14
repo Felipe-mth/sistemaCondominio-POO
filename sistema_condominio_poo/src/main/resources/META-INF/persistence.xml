@@ -8,15 +8,15 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="default">
         <properties>
             <!--no value vc irá colocar qual BD vc está usando seguido do nome do banco (aqui seria automoveis) -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/condominioPOO" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/condominiopoo" />
 
             <property name="javax.persistence.jdbc.user" value="root" />
 
-            <property name="javax.persistence.jdbc.password" value="" />
+            <property name="javax.persistence.jdbc.password" value="1234" />
 
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
 
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+           <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect"/>
 
             <property name="hibernate.hbm2ddl.auto" value="update" />
 
@@ -30,3 +30,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
 </persistence>
 
+<!--
+    <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect"/>
+   <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>  
+-->

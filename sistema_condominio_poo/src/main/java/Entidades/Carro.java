@@ -1,10 +1,20 @@
 package Entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Carro")
 public class Carro {
-   
+    @Id 
     private String placa; //pode ser uma pk;
+    @GeneratedValue
     private String vaga;
     private String modelo;
+
+    public Carro(){}
 
     public Carro(String placa, String vaga, String modelo) {
         this.placa = placa;
