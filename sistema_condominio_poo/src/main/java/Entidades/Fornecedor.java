@@ -1,9 +1,24 @@
 package Entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "Fornecedor")
 public class Fornecedor {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String telefone;
     private String nome;
+
+    @OneToOne
     private Endereco endereco;
 
     public Fornecedor(String telefone, String nome, Endereco endereco) {

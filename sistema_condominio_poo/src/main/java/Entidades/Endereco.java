@@ -10,13 +10,13 @@ public class Endereco {
     private int   id;
     @GeneratedValue
     public int     numero;
+
     private String rua;
     private String bairro;
     private String cidade;
     private String estado;
     private String pais;
     
-
     public Endereco(String rua, String bairro, String cidade, String estado, String pais, int numero) {
         this.rua    = rua;
         this.bairro = bairro;
