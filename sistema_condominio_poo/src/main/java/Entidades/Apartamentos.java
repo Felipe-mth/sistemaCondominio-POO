@@ -1,11 +1,25 @@
 package Entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Apartamentos")
 public class Apartamentos {
+
+    @Id //este 
     private int nApartamento; 
+
+    @OneToMany
+    public Estacionamento estacionamento;
+
+    @OneToMany
+    private Morador morador;
+
     private int andar;
     private int bloco;
-    public Estacionamento estacionamento;
-    private Morador morador;
     
     public Apartamentos(Morador morador, int nApartamento, int andar, int bloco) {
         this.morador = morador;
