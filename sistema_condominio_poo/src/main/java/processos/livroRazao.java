@@ -3,8 +3,18 @@ package processos;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "livroRazao")
 public class livroRazao{
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
+    
     private int mes;
     private String criadoPor;
     private String modificadoPor;
@@ -12,7 +22,7 @@ public class livroRazao{
     private double saldo;
     private final double montante;
     ArrayList<livroDiario> livrosDiarios = new ArrayList();
-
+    
     public livroRazao(int id, int mes,String criadoPor, double montante){
         this.Id = id;
         this.mes = mes;

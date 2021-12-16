@@ -2,15 +2,27 @@ package processos;
 import Entidades.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 public class Almoxarifado {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int Id;
+    
+    @OneToOne
     private Funcionario funcionario;
+    
     private String telefone;
     private String email;
     private ArrayList<Produtos> produtos;
+    
+    
     private Scanner scan = new Scanner(System.in);
 
-    public Almoxarifado(Funcionario funcionario, String telefone, String email) {
+    public Almoxarifado( int id,Funcionario funcionario, String telefone, String email) {
+        this.Id = id;
         this.funcionario = funcionario;
         this.telefone = telefone;
         this.email = email;
