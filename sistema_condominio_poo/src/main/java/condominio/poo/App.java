@@ -51,7 +51,9 @@ public class App {
         
         try{
             System.out.println( "======================================" );
-            Carro carro = new Carro("AWQQB","ocupada","ferarri");
+            Carro carro = new Carro("mnQQB","ocupada","ferarri");
+            Morador m = new Morador("1234", "111111", "qin");
+            m.setCarro(carro);
             // Carro carro = new Carro();
             // carro.setModelo("ferarri");
             // carro.setPlaca("AAABBB");

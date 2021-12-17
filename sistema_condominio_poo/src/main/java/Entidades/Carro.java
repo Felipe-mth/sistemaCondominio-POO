@@ -1,34 +1,26 @@
 package Entidades;
 
 import javax.persistence.Entity;
-<<<<<<< HEAD
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-=======
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
->>>>>>> 222eee8f0019a49ef63e12b5a2ff0a1c457773f7
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Carro")
 public class Carro {
-<<<<<<< HEAD
-    @Id 
-    private String placa; //pode ser uma pk;
-    @GeneratedValue
-=======
     
     @Id
     private String placa; //pode ser uma pk;
 
+    //tirando pq podemos identificar o carro pelo morado, ate pq um fantasma não pode ter um carro.
     @ManyToMany
     private Morador morador;
     
->>>>>>> 222eee8f0019a49ef63e12b5a2ff0a1c457773f7
     private String vaga;
     private String modelo;
-
+    
+    //OBS: ter esse construtor vazio é importante para funcionar corretamente BD
     public Carro(){}
 
     public Carro(String placa, String vaga, String modelo) {

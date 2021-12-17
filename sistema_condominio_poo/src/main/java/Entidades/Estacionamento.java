@@ -15,10 +15,10 @@ public class Estacionamento {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne
+    //não precisamos de relação ja que o carro ira vir de morador
     private Carro carro;
 
-    @OneToMany
+    @OneToOne
     public Morador morador;
     
     private boolean reserva;
