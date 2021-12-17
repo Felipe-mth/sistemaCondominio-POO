@@ -1,4 +1,5 @@
 package processos;
+
 import Entidades.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -26,7 +27,7 @@ public class GestaoUsuarios {
         for (Morador pessoa : moradores) {
           if (cpf == pessoa.getCPF()) {
             System.out.println("Nome: " + pessoa.getNome());
-            System.out.println("ID: " + pessoa.getID());
+            //System.out.println("ID: " + pessoa.getID()); //id foi retirado, para deixar apenas o cpf como indentificador sentral
             System.out.println("CPF: " + pessoa.getCPF());
             System.out.println("Telefone: " + pessoa.getTelefone());
           }
@@ -42,7 +43,7 @@ public class GestaoUsuarios {
         for (Morador pessoa : moradores) {
           if (nome == pessoa.getNome()) {
             System.out.println("Nome: " + pessoa.getNome());
-            System.out.println("ID: " + pessoa.getID());
+            //System.out.println("ID: " + pessoa.getID()); //id foi retirado, para deixar apenas o cpf como indentificador sentral
             System.out.println("CPF: " + pessoa.getCPF());
             System.out.println("Telefone: " + pessoa.getTelefone());
           }

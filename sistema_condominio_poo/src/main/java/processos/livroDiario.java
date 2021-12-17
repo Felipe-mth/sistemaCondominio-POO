@@ -4,7 +4,6 @@ import Entidades.Produtos;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,15 +16,16 @@ import javax.persistence.ManyToOne;
 public class livroDiario {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-    private Date date = new Date();
-    private String data;
+    private Date date = new Date();              // modificar se for para usar o calendar
+    private String data;                         // same
     private double gastoDeProduto;
     
     @ManyToOne
     private livroRazao livroRazao;
     SimpleDateFormat formatador = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-    ArrayList<Produtos> produtos = new ArrayList();
+    ArrayList<Produtos> produtos = new ArrayList<>();  //aqui so tava faltando o <>, no new arraylist.
     public livroDiario(){}
+   
     public livroDiario(int Id){
       this.Id = Id;
       this.data = formatador.format(date);

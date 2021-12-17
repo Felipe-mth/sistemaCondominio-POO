@@ -1,23 +1,14 @@
 package Entidades;
 
 import javax.persistence.Entity;
-<<<<<<< HEAD
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-=======
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
->>>>>>> 222eee8f0019a49ef63e12b5a2ff0a1c457773f7
 import javax.persistence.Table;
+import javax.persistence.ManyToMany;
+//import javax.persistence.GeneratedValue;
 
 @Entity
 @Table(name = "Carro")
 public class Carro {
-<<<<<<< HEAD
-    @Id 
-    private String placa; //pode ser uma pk;
-    @GeneratedValue
-=======
     
     @Id
     private String placa; //pode ser uma pk;
@@ -25,7 +16,6 @@ public class Carro {
     @ManyToMany
     private Morador morador;
     
->>>>>>> 222eee8f0019a49ef63e12b5a2ff0a1c457773f7
     private String vaga;
     private String modelo;
 

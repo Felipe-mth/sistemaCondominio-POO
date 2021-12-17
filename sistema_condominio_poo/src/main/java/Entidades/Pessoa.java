@@ -20,7 +20,6 @@ public class Pessoa {
         this.nome = nome;
     }
 
-
     public String getCPF() {
         return CPF;
     }
