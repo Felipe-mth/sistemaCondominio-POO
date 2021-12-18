@@ -3,16 +3,29 @@ package processos;
 
 import java.util.ArrayList;
 
+//import java.util.Date;//n esta sendo usado nessa class todas as chamadas ja são retiradas das outras classes
+//import java.util.Calendar; //caso queira usar calendario
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "livroRazao")
 public class livroRazao{
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
+    
     private int mes;
     private String criadoPor;
     private String modificadoPor;
     private double despesa;
     private double saldo;
     private final double montante;
-    ArrayList<livroDiario> livrosDiarios = new ArrayList();
-
+    ArrayList<livroDiario> livrosDiarios = new ArrayList<>();   // coloquei apenas o <>, na declaração do new arraylist.
+    
     public livroRazao(int id, int mes,String criadoPor, double montante){
         this.Id = id;
         this.mes = mes;
@@ -73,7 +86,8 @@ public class livroRazao{
     }
 
     public void adicionarAoHistorico(livroDiario livroDiario) {
-        int valor = livroDiario.getDate().getMonth() + 1;
+        int valor = livroDiario.getDate().getMonth() + 1; // o +1 é pq ele identifica janeiro como 0 e n como 1
+        // esse erro em getMonth() é apenas informando que essa função esta ultrapadsada, pois existe a biblioteca Calendario no momento.
 
         if(valor == this.mes){
             livrosDiarios.add((livroDiario) livroDiario);

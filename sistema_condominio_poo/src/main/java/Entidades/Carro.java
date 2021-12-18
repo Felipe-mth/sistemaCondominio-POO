@@ -5,6 +5,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.ManyToMany;
+//import javax.persistence.GeneratedValue;
 
 @Entity
 @Table(name = "Carro")

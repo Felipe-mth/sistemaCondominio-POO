@@ -1,20 +1,21 @@
 package Entidades;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import Entidades.Endereco;
 
-
+/**
+ * Funcionario e Morador serão uma unica tabela de pessoa sendo indentificada pelo  DiscriminatorValue(value = "")
+ */
 @Entity
-@Table(name = "Funcionario") //!!aqui levanta um erro entender o porque!!
+@DiscriminatorValue(value = "F")
 public class Funcionario extends Pessoa  {
 
     
     @OneToOne
     private Endereco endereco;
-
-    
 
     private String cargo;
     private double salario;

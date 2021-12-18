@@ -1,5 +1,6 @@
 package Entidades;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
@@ -7,15 +8,17 @@ import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+/**
+ * Funcionario e Morador serão uma unica tabela de pessoa sendo indentificada pelo  DiscriminatorValue(value = "")
+ */
 @Entity
-@Table(name = "Morador")
+@DiscriminatorValue(value = "M")
 public class Morador extends Pessoa {
 
     // @OneToOne
     // private Pessoa pessoa;
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    // @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // private int id;
 
     @ManyToMany
     public Carro carro;
