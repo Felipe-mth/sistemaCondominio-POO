@@ -1,20 +1,20 @@
 package condominio.poo;
-import java.util.List;
+//import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 
-import javax.persistence.Query;
+//import javax.persistence.Query;
 
 
-import Entidades.Carro;
+//import Entidades.Carro;
 
 public class JPAUtil {
         //criar a conexão com BD
         private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
-
+        
         //conexão com a unidade de persistência.
         public static EntityManager getEntityManager() {
             return emf.createEntityManager();
@@ -22,6 +22,8 @@ public class JPAUtil {
         public static void closeEntityManager() {
             emf.close();
         }
+
+        /*//para depois
         public static void consulta() {
             System.out.println("-----------CONSULTA--------------");
             EntityManager em = JPAUtil.getEntityManager();
@@ -31,7 +33,7 @@ public class JPAUtil {
             for(Carro a : autos) {
             System.out.println(a.getModelo() +" --- "+a.getPlaca());
             }
-        }
+        }*/
 }
         
 

@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+//import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -15,20 +15,23 @@ public class Estacionamento {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    //não precisamos de relação ja que o carro ira vir de morador
+    @OneToOne
     private Carro carro;
 
-    @OneToOne
-    public Morador morador;
+    //@ManyToOne
+    //public Apartamentos apartamentos;
+
+    //public Morador morador;
     
     private boolean reserva;
     private int bloco;
     
+    
    
 
-    public Estacionamento(Morador morador){
-        this.morador = morador;
-    }
+   // public Estacionamento(Morador morador){ //aqui que ta dando a falha.
+     //   this.morador = morador;
+    //}
 
     public boolean isReserva() {
         return reserva;

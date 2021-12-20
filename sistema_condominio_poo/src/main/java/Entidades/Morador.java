@@ -1,43 +1,63 @@
 package Entidades;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
-/**
- * Funcionario e Morador serão uma unica tabela de pessoa sendo indentificada pelo  DiscriminatorValue(value = "")
- */
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 @Entity
-@DiscriminatorValue(value = "M")
-public class Morador extends Pessoa {
+@Table(name = "Morador")
+public class Morador{
 
-    // @OneToOne
-    // private Pessoa pessoa;
-    // @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // private int id;
+    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    @ManyToMany
-    public Carro carro;
+    @OneToOne
+    private Pessoa pessoa;
 
+    @ManyToOne
+    private Apartamentos apartamentos;
+
+    //@ManyToMany
+    //public Carro carro;
+
+   // public Morador(String cpf, String telefone, String nome) {
+     //   super(cpf, telefone, nome);   
+    //}
     
-
-    public Morador(String cpf, String telefone, String nome) {
-        super(cpf, telefone, nome);
-        
+    public int getId() {
+        return id;
     }
-    
-    public void getDadosCarro(){
-
+    public void setId(int id) {
+        this.id = id;
     }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public Apartamentos getApartamentos() {
+        return apartamentos;
+    }
+    public void setApartamentos(Apartamentos apartamentos) {
+        this.apartamentos = apartamentos;
+    }
+
+
+   // public void getDadosCarro(){
+
+    //}
 
     //metodo responsavel por instaciar a variavel carro
-    public void setCarro(Carro c){
-        this.carro = new Carro(c.getModelo(),c.getPlaca(),c.getVaga());
-    }
+    //public void setCarro(Carro c){
+      //  this.carro = new Carro(c.getModelo(),c.getPlaca(),c.getVaga());
+    //}
 
     
 }

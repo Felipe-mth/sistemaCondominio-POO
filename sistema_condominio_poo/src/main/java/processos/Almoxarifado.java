@@ -1,12 +1,18 @@
 package processos;
+
 import Entidades.*;
 import java.util.ArrayList;
-import java.util.Scanner;
+//import java.util.Scanner;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Almoxarifado")
 public class Almoxarifado {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
@@ -16,16 +22,21 @@ public class Almoxarifado {
     
     private String telefone;
     private String email;
+
     private ArrayList<Produtos> produtos;
-    
-    
-    private Scanner scan = new Scanner(System.in);
 
     public Almoxarifado( int id,Funcionario funcionario, String telefone, String email) {
         this.Id = id;
         this.funcionario = funcionario;
         this.telefone = telefone;
         this.email = email;
+    }
+
+    public int getId() {
+        return Id;
+    }
+    public void setId(int id) {
+        Id = id;
     }
 
     public Funcionario getFuncionario() {
@@ -68,7 +79,9 @@ public class Almoxarifado {
     }
 
     public void reabastecer() {
-        System.out.println("Selecione o produto que será reabastecido: ");
+        //private Scanner scan = new Scanner(System.in);
+
+        /*System.out.println("Selecione o produto que será reabastecido: ");
         for (Produtos prod : produtos) {
             System.out.println("Nome: " + prod.getNome());
         }
@@ -83,7 +96,7 @@ public class Almoxarifado {
             }
         }
 
-        scan.close();
+        scan.close();*/
     }
 
     public void trocarFuncionario(Funcionario novoFuncionario) {

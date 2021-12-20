@@ -1,8 +1,8 @@
 package condominio.poo;
-import Entidades.*;
-import processos.*;
-import java.util.HashSet;
-import java.util.Set;
+//import Entidades.*;
+//import processos.*;
+//import java.util.HashSet;
+//import java.util.Set;
 //imports para o JPA
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -11,7 +11,38 @@ import javax.persistence.EntityTransaction;
 
 public class App {
     public static void main(String[] args) {
-        Endereco e = new Endereco("123", "bairro", "cidade", "estado", "pais", 666);
+
+        System.out.println( "Hello World!" );
+       
+        try{
+            System.out.println( "======================================" );
+          
+            EntityManager em = JPAUtil.getEntityManager();
+
+            //as funçoes do banco ai
+            EntityTransaction tx = em.getTransaction();
+            tx.begin();
+
+            tx.commit();
+
+            em.close();
+            System.out.println( "======================================" );
+
+        }catch (Exception e){
+            System.out.println( "=====================================\n"+
+            "Deu errado --> " + e);
+        }
+        //parte 1
+        //parte2
+    }
+}
+
+
+
+/*
+//parte 1
+
+       //Endereco e = new Endereco("123", "bairro", "cidade", "estado", "pais", 666);
         // Fornecedor f = new Fornecedor("telefone", "nome", e);
         // Produtos p = new Produtos(f, 55.5, "ome");
         // livroDiario l = new livroDiario(1);
@@ -38,22 +69,23 @@ public class App {
         // System.out.println("montante \n");        
         // System.out.println(lr.getMontante());
         
-        
 
         // Funcionario func1 = new Funcionario("123456", "081123", "João");
 
         // Almoxarifado almoxarifado = new Almoxarifado(func1, "027456", "almoraxifado@produtos.com");
 
+*/
 
+/*
+//parte2
+        
         /**
          * Aqui temos um algoritmo basico para inserir dados em uma tabela
          */
-        
+        /*
         try{
             System.out.println( "======================================" );
-            Carro carro = new Carro("mnQQB","ocupada","ferarri");
-            Morador m = new Morador("1234", "111111", "qin");
-            m.setCarro(carro);
+            Carro carro = new Carro("AWQQB","ocupada","ferarri");
             // Carro carro = new Carro();
             // carro.setModelo("ferarri");
             // carro.setPlaca("AAABBB");
@@ -77,6 +109,4 @@ public class App {
             System.out.println( "=====================================\n"+
             "Deu errado a consulta --> " + error);
         }
-        
-    }
-}
+*/

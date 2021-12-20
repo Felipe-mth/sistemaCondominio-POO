@@ -1,6 +1,6 @@
 package Entidades;
 
-import processos.*;
+//import processos.*;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,10 +18,10 @@ public class Produtos {
 
     @ManyToOne
     private Fornecedor fornecedor;
-    @ManyToOne
-    private livroDiario livroDiario;
-    @ManyToOne
-    private Almoxarifado almoxarifado;
+   // @ManyToOne
+   // private livroDiario livroDiario;
+  //  @ManyToOne
+  //  private Almoxarifado almoxarifado;
     
     private int quantidadeMinima;
     private double preco;
@@ -103,10 +103,10 @@ public class Produtos {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    public void setlivroDiario(livroDiario livro){
+    /*public void setlivroDiario(livroDiario livro){
         this.livroDiario = livro;
     }
     public void setAlmoxarifado(Almoxarifado armazem){
         this.almoxarifado = armazem;
-    }
+    }*/
 }
