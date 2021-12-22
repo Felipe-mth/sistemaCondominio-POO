@@ -78,8 +78,15 @@ public class Almoxarifado {
         }
     }
 
-    public void reabastecer() {
-        //private Scanner scan = new Scanner(System.in);
+    public void reabastecer(int valor, String produto) {
+        for(Produtos prod: produtos){
+            if(prod.getNome().equals(produto)){
+                prod.setQuantidade( prod.getQuantidade() + valor);
+                System.out.println("Produto reabastecido com sucesso");
+            }
+        }
+            
+             //private Scanner scan = new Scanner(System.in);
 
         /*System.out.println("Selecione o produto que será reabastecido: ");
         for (Produtos prod : produtos) {
