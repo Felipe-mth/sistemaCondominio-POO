@@ -1,18 +1,18 @@
 package Model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 //import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
+@PrimaryKeyJoinColumn(name="id")
 @Table(name = "Funcionario")
 public class Funcionario extends Pessoa {
-
+    /*
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    */
     /*
     @OneToOne
     private Endereco endereco;
@@ -55,12 +55,5 @@ public class Funcionario extends Pessoa {
 
     public void setTurno(String turno) {
         this.turno = turno;
-    }
-
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
     }
 }

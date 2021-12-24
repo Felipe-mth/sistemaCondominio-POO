@@ -1,33 +1,48 @@
 package Model;
 
 import javax.persistence.Entity;
-//import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "Pessoa")
 public class Pessoa {
 
-    //@Id
-    private String cpfCNPJ;
+    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    
+    private String cpfCnpj;
     
     private Endereco endereco;
     private String telefone;
     private String nome;
     
     public Pessoa(String cpfCNPJ, String telefone, String nome, Endereco endereco){
-        this.cpfCNPJ = cpfCNPJ;
+        this.cpfCnpj = cpfCNPJ;
         this.telefone = telefone;
         this.nome = nome;
         this.endereco = endereco;
     }
 
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getCpfCnpj() {
-        return cpfCNPJ;
+        return cpfCnpj;
     }
 
     public void setCpfCnpj(String cpfCNPJ) {
-        this.cpfCNPJ = cpfCNPJ;
+        this.cpfCnpj = cpfCNPJ;
     }
 
     public String getTelefone() {
