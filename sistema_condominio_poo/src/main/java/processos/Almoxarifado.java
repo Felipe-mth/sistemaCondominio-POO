@@ -25,7 +25,7 @@ public class Almoxarifado {
 
     private ArrayList<Produtos> produtos;
 
-    public Almoxarifado( int id,Funcionario funcionario, String telefone, String email) {
+    public Almoxarifado(int id,Funcionario funcionario, String telefone, String email) {
         this.Id = id;
         this.funcionario = funcionario;
         this.telefone = telefone;
