@@ -1,4 +1,6 @@
-package condominio.poo;
+package View;
+import java.io.IOException;
+
 //import Entidades.*;
 //import processos.*;
 //import java.util.HashSet;
@@ -8,12 +10,20 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import Model.*;
+import condominio.poo.JPAUtil;
+
+//JavaFX Imports
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 
 
-public class App {
+public class App extends Application {
     public static void main(String[] args) {
-
+        launch(args);
         System.out.println( "Hello World!" );
        
         try{
@@ -41,6 +51,15 @@ public class App {
         Endereco e = new Endereco("123", "bairro", "cidade", "estado", "pais", 666);
         Funcionario func = new Funcionario("asdasd", e, "gestor", 456.7, "asd", "asdasd", "Jerso");
         */
+    }
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("hello-view.fxml"));
+        Scene scene = new Scene((Parent) fxmlLoader.load(), 320, 240);
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
+        stage.show();
     }
 }
 
