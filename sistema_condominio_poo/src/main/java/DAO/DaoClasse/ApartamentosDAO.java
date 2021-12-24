@@ -4,6 +4,7 @@ import java.util.List;
 
 import DAO.interfaces.crudDAO;
 import Model.Apartamentos;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -26,7 +27,6 @@ public class ApartamentosDAO implements crudDAO<Apartamentos>{
 
     @Override
     public Apartamentos findByName(String nome) {
-        // TODO Auto-generated method stub
         return null;
     }
 

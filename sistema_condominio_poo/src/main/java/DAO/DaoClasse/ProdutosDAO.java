@@ -2,76 +2,77 @@ package DAO.DaoClasse;
 
 import java.util.List;
 
+import DAO.interfaces.crudDAO;
+import Model.Produtos;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import condominio.poo.JPAUtil;
-import DAO.interfaces.*;
-import Model.*;
 
-public class CarroDAO implements crudDAO<Carro> {
+public class ProdutosDAO implements crudDAO<Produtos>{
     public EntityManager em = JPAUtil.getEntityManager();
     public EntityTransaction tx = em.getTransaction();
 
-    public List<Carro> findAll() {
+    @Override
+    public List<Produtos> findAll() {
         System.out.println("-----------CONSULTA--------------");
-        Query q = (Query) em.createQuery("select a from Carro a", Carro.class);
+        Query q = (Query) em.createQuery("select a from Produtos a", Produtos.class);
         @SuppressWarnings("unchecked")
-        List<Carro> autos = q.getResultList();
+        List<Produtos> produtos = q.getResultList();
 
-        return autos;
+        return produtos;
     }
 
-    public Carro findById(String id) {
+    @Override
+    public Produtos findByName(String nome) {
         try {
-            String consultaId = "from Carro where placa=" + id;
+            String consultaId = "from Produtos where nome=" + nome;
             Query q = (Query) em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
-            List<Carro> carroId = q.getResultList();
+            List<Produtos> produtosId = q.getResultList();
             int index = -1;
 
-            for(int i = 0; i < carroId.size(); i++) {
-                if(carroId.get(i).getPlaca() == id) {
+            for(int i = 0; i < produtosId.size(); i++) {
+                if(produtosId.get(i).getNome() == nome) {
                     index = i;
                 }
             }
 
-            return carroId.get(index);
+            return produtosId.get(index);
         } catch (Exception e) {
             System.out.println("------>" + e);
             return null;
         }
     }
 
-    public Carro findByName(String nome) {
+    public Produtos findById(int id) {
         try {
-            String consultaId = "from Carro where modelo=" + nome;
+            String consultaId = "from Produtos where id=" + id;
             Query q = (Query) em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
-            List<Carro> carroNome = q.getResultList();
-            
+            List<Produtos> produtosId = q.getResultList();
             int index = -1;
 
-            for(int i = 0; i < carroNome.size(); i++) {
-                if(carroNome.get(i).getModelo() == nome) {
+            for(int i = 0; i < produtosId.size(); i++) {
+                if(produtosId.get(i).getId() == id) {
                     index = i;
                 }
             }
-
-            return carroNome.get(index);
+            return produtosId.get(index);
         } catch (Exception e) {
             System.out.println("------>" + e);
             return null;
         }
     }
 
-    public void insertDados(Carro carro) {
+    @Override
+    public void insertDados(Produtos prod) {
         try {
             System.out.println("======================================");
 
             tx.begin();
-            em.persist(carro);
+            em.persist(prod);
             tx.commit();
             em.close();
 
@@ -79,27 +80,16 @@ public class CarroDAO implements crudDAO<Carro> {
         } catch (Exception error) {
             System.out.println("=====================================\n" +
                     "Deu errado --> " + error);
-        }
+        }  
     }
 
-    public void deleteDados(Carro carro) {
-        try {
-            Carro carroDel = em.getReference(Carro.class, carro.getPlaca());
-            tx.begin();
-            em.remove(carroDel);
-            tx.commit();
-
-        } catch (Exception e) {
-            System.out.println("------>" + e);
-        }
-    }
-
-    public void updateDados(Carro carro) {
+    @Override
+    public void updateDados(Produtos prod) {
         try {
             System.out.println("======================================");
 
             tx.begin();
-            em.merge(carro);
+            em.merge(prod);
             tx.commit();
             em.close();
 
@@ -107,7 +97,20 @@ public class CarroDAO implements crudDAO<Carro> {
         } catch (Exception error) {
             System.out.println("=====================================\n" +
                     "Deu errado --> " + error);
-        }
+        } 
     }
 
+    @Override
+    public void deleteDados(Produtos prod) {
+        try {
+            Produtos prodDel = em.getReference(Produtos.class, prod.getId());
+            tx.begin();
+            em.remove(prodDel);
+            tx.commit();
+        } catch (Exception e) {
+            System.out.println("------>" + e);
+        }
+        
+    }
+    
 }
