@@ -1,14 +1,14 @@
 package Model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
+//import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Pessoa")
 public class Pessoa {
 
-    @Id
+    //@Id
     private String cpfCNPJ;
     
     private Endereco endereco;

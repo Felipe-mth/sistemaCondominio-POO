@@ -1,5 +1,8 @@
 package DAO.DaoClasse;
 
+import DAO.interfaces.crudDAO;
+import Model.Funcionario;
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,69 +10,68 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import condominio.poo.JPAUtil;
-import DAO.interfaces.*;
-import Model.*;
 
-public class CarroDAO implements crudDAO<Carro> {
+public class FuncionarioDAO implements crudDAO<Funcionario>{
     public EntityManager em = JPAUtil.getEntityManager();
     public EntityTransaction tx = em.getTransaction();
-
-    public List<Carro> findAll() {
+    
+    @Override
+    public List<Funcionario> findAll() {
         System.out.println("-----------CONSULTA--------------");
-        Query q = (Query) em.createQuery("select a from Carro a", Carro.class);
+        Query q = (Query) em.createQuery("select a from Carro a", Funcionario.class);
 
-        List<Carro> autos = q.getResultList();
+        List<Funcionario> funcionarios = q.getResultList();
 
-        return autos;
+        return funcionarios;
     }
 
-    public Carro findById(String id) {
+    @Override
+    public Funcionario findByName(String nome) {
         try {
-            String consultaId = "from Carro where placa=" + id;
+            String consultaId = "from Funcionario where nome=" + nome;
             Query q = (Query) em.createQuery(consultaId);
-            List<Carro> carroId = q.getResultList();
+            List<Funcionario> funcionariosId = q.getResultList();
             int index = -1;
 
-            for(int i = 0; i < carroId.size(); i++) {
-                if(carroId.get(i).getPlaca() == id) {
+            for(int i = 0; i < funcionariosId.size(); i++) {
+                if(funcionariosId.get(i).getNome() == nome) {
                     index = i;
                 }
             }
 
-            return carroId.get(index);
+            return funcionariosId.get(index);
         } catch (Exception e) {
             System.out.println("------>" + e);
             return null;
         }
     }
 
-    public Carro findByName(String nome) {
+    public Funcionario findById(int id) {
         try {
-            String consultaId = "from Carro where modelo=" + nome;
+            String consultaId = "from Funcionario where id=" + id;
             Query q = (Query) em.createQuery(consultaId);
-            List<Carro> carroNome = q.getResultList();
-            
+            List<Funcionario> funcionariosId = q.getResultList();
             int index = -1;
 
-            for(int i = 0; i < carroNome.size(); i++) {
-                if(carroNome.get(i).getModelo() == nome) {
+            for(int i = 0; i < funcionariosId.size(); i++) {
+                if(funcionariosId.get(i).getId() == id) {
                     index = i;
                 }
             }
-
-            return carroNome.get(index);
+            return funcionariosId.get(index);
         } catch (Exception e) {
             System.out.println("------>" + e);
             return null;
         }
     }
 
-    public void insertDados(Carro carro) {
+    @Override
+    public void insertDados(Funcionario func) {
         try {
             System.out.println("======================================");
 
             tx.begin();
-            em.persist(carro);
+            em.persist(func);
             tx.commit();
             em.close();
 
@@ -80,18 +82,21 @@ public class CarroDAO implements crudDAO<Carro> {
         }
     }
 
-    public void deleteDados(Carro carro) {
-        try {
-            Carro carroDel = em.getReference(Carro.class, carro.getPlaca());
-            tx.begin();
-            em.remove(carroDel);
-            tx.commit();
+    @Override
+    public void updateDados(Funcionario func) {
+        // TODO Auto-generated method stub
+        
+    }
 
+    @Override
+    public void deleteDados(Funcionario func) {
+        try {
+            Funcionario funcionarioDel = em.getReference(Funcionario.class, func.getId());
+            tx.begin();
+            em.remove(funcionarioDel);
+            tx.commit();
         } catch (Exception e) {
             System.out.println("------>" + e);
         }
-    }
-
-    public void updateDados(Carro carro) {
     }
 }

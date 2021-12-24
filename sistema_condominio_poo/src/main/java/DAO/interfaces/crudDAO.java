@@ -6,7 +6,7 @@ public interface crudDAO<OBJ> {
 
     public List<OBJ> findAll();
 
-    public List<OBJ> findByName(String nome);
+    public OBJ findByName(String nome);
 
     public void insertDados(OBJ obj);
 

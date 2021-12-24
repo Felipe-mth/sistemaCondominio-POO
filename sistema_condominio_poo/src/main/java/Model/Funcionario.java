@@ -56,4 +56,11 @@ public class Funcionario extends Pessoa {
     public void setTurno(String turno) {
         this.turno = turno;
     }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 }

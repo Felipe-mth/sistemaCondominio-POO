@@ -8,7 +8,7 @@ import javax.persistence.Query;
 
 import condominio.poo.JPAUtil;
 
-public class GenericoDAO {
+public class GenericoDAO{
     public EntityManager em = JPAUtil.getEntityManager();
     public EntityTransaction tx = em.getTransaction();
 
@@ -35,14 +35,13 @@ public class GenericoDAO {
 
     }
 
-    public List<Object> findByName(String nome) {
+    public Object findByName(String nome) {
         try {
             String consultaId = "from Object where nome=" + nome;
             Query q = (Query) em.createQuery(consultaId);
             List<Object> objNome = q.getResultList();
 
             return objNome;
-
         } catch (Exception e) {
             System.out.println("------>" + e);
             return null;
@@ -79,6 +78,4 @@ public class GenericoDAO {
 
     public void updateDados(Object carro) {
     }
-
-    
 }

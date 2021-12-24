@@ -1,5 +1,6 @@
 package DAO.DaoClasse;
 
+import DAO.interfaces.crudDAO;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,69 +8,69 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import condominio.poo.JPAUtil;
-import DAO.interfaces.*;
+
 import Model.*;
 
-public class CarroDAO implements crudDAO<Carro> {
+public class MoradorDAO implements crudDAO<Morador> {
     public EntityManager em = JPAUtil.getEntityManager();
     public EntityTransaction tx = em.getTransaction();
 
-    public List<Carro> findAll() {
+    @Override
+    public List<Morador> findAll() {
         System.out.println("-----------CONSULTA--------------");
-        Query q = (Query) em.createQuery("select a from Carro a", Carro.class);
+        Query q = (Query) em.createQuery("select a from Morador a", Morador.class);
 
-        List<Carro> autos = q.getResultList();
-
-        return autos;
+        List<Morador> moradores = q.getResultList();
+        return moradores;
     }
 
-    public Carro findById(String id) {
+    @Override
+    public Morador findByName(String nome) {
         try {
-            String consultaId = "from Carro where placa=" + id;
+            String consultaId = "from Morador where nome=" + nome;
             Query q = (Query) em.createQuery(consultaId);
-            List<Carro> carroId = q.getResultList();
+            List<Morador> moradoresId = q.getResultList();
             int index = -1;
 
-            for(int i = 0; i < carroId.size(); i++) {
-                if(carroId.get(i).getPlaca() == id) {
+            for(int i = 0; i < moradoresId.size(); i++) {
+                if(moradoresId.get(i).getNome() == nome) {
                     index = i;
                 }
             }
 
-            return carroId.get(index);
+            return moradoresId.get(index);
         } catch (Exception e) {
             System.out.println("------>" + e);
             return null;
         }
     }
 
-    public Carro findByName(String nome) {
+    public Morador findById(int id) {
         try {
-            String consultaId = "from Carro where modelo=" + nome;
+            String consultaId = "from Morador where id=" + id;
             Query q = (Query) em.createQuery(consultaId);
-            List<Carro> carroNome = q.getResultList();
-            
+            List<Morador> moradoresId = q.getResultList();
             int index = -1;
 
-            for(int i = 0; i < carroNome.size(); i++) {
-                if(carroNome.get(i).getModelo() == nome) {
+            for(int i = 0; i < moradoresId.size(); i++) {
+                if(moradoresId.get(i).getId() == id) {
                     index = i;
                 }
             }
-
-            return carroNome.get(index);
+            return moradoresId.get(index);
         } catch (Exception e) {
             System.out.println("------>" + e);
             return null;
         }
     }
 
-    public void insertDados(Carro carro) {
+    @Override
+    public void insertDados(Morador morador) {
         try {
             System.out.println("======================================");
 
             tx.begin();
-            em.persist(carro);
+            em.persist(morador);
             tx.commit();
             em.close();
 
@@ -80,18 +81,22 @@ public class CarroDAO implements crudDAO<Carro> {
         }
     }
 
-    public void deleteDados(Carro carro) {
+    @Override
+    public void updateDados(Morador morador) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void deleteDados(Morador morador) {
         try {
-            Carro carroDel = em.getReference(Carro.class, carro.getPlaca());
+            Morador moradorDel = em.getReference(Morador.class, morador.getId());
             tx.begin();
-            em.remove(carroDel);
+            em.remove(moradorDel);
             tx.commit();
 
         } catch (Exception e) {
             System.out.println("------>" + e);
         }
-    }
-
-    public void updateDados(Carro carro) {
-    }
-}
+    } 
+}   
