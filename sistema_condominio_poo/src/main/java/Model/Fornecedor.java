@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Fornecedor extends Pessoa {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
     /*
     @OneToOne
     private Endereco endereco;
@@ -25,11 +25,11 @@ public class Fornecedor extends Pessoa {
 
     // metodos acessores
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 }

@@ -1,7 +1,7 @@
 package DAO.DaoClasse;
 
 import DAO.interfaces.crudDAO;
-import Model.Funcionario;
+import Model.Fornecedor;
 
 import java.util.List;
 
@@ -11,54 +11,54 @@ import javax.persistence.Query;
 
 import condominio.poo.JPAUtil;
 
-public class FuncionarioDAO implements crudDAO<Funcionario>{
+public class FornecedorDAO implements crudDAO<Fornecedor>{
     public EntityManager em = JPAUtil.getEntityManager();
     public EntityTransaction tx = em.getTransaction();
-    
+
     @Override
-    public List<Funcionario> findAll() {
+    public List<Fornecedor> findAll() {
         System.out.println("-----------CONSULTA--------------");
-        Query q = (Query) em.createQuery("select a from Funcionario a", Funcionario.class);
+        Query q = (Query) em.createQuery("select a from Fornecedor a", Fornecedor.class);
 
-        List<Funcionario> funcionarios = q.getResultList();
+        List<Fornecedor> fornecedores = q.getResultList();
 
-        return funcionarios;
+        return fornecedores;
     }
 
     @Override
-    public Funcionario findByName(String nome) {
+    public Fornecedor findByName(String nome) {
         try {
-            String consultaId = "from Funcionario where nome=" + nome;
+            String consultaId = "from Fornecedor where nome=" + nome;
             Query q = (Query) em.createQuery(consultaId);
-            List<Funcionario> funcionariosId = q.getResultList();
+            List<Fornecedor> fornecedoresId = q.getResultList();
             int index = -1;
 
-            for(int i = 0; i < funcionariosId.size(); i++) {
-                if(funcionariosId.get(i).getNome() == nome) {
+            for(int i = 0; i < fornecedoresId.size(); i++) {
+                if(fornecedoresId.get(i).getNome() == nome) {
                     index = i;
                 }
             }
 
-            return funcionariosId.get(index);
+            return fornecedoresId.get(index);
         } catch (Exception e) {
             System.out.println("------>" + e);
             return null;
         }
     }
 
-    public Funcionario findById(int id) {
+    public Fornecedor findById(int id) {
         try {
-            String consultaId = "from Funcionario where id=" + id;
+            String consultaId = "from Fornecedor where id=" + id;
             Query q = (Query) em.createQuery(consultaId);
-            List<Funcionario> funcionariosId = q.getResultList();
+            List<Fornecedor> fornecedoresId = q.getResultList();
             int index = -1;
 
-            for(int i = 0; i < funcionariosId.size(); i++) {
-                if(funcionariosId.get(i).getId() == id) {
+            for(int i = 0; i < fornecedoresId.size(); i++) {
+                if(fornecedoresId.get(i).getId() == id) {
                     index = i;
                 }
             }
-            return funcionariosId.get(index);
+            return fornecedoresId.get(index);
         } catch (Exception e) {
             System.out.println("------>" + e);
             return null;
@@ -66,12 +66,12 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
     }
 
     @Override
-    public void insertDados(Funcionario func) {
+    public void insertDados(Fornecedor fornecedor) {
         try {
             System.out.println("======================================");
 
             tx.begin();
-            em.persist(func);
+            em.persist(fornecedor);
             tx.commit();
             em.close();
 
@@ -83,20 +83,21 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
     }
 
     @Override
-    public void updateDados(Funcionario func) {
+    public void updateDados(Fornecedor fornecedor) {
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    public void deleteDados(Funcionario func) {
+    public void deleteDados(Fornecedor fornecedor) {
         try {
-            Funcionario funcionarioDel = em.getReference(Funcionario.class, func.getId());
+            Fornecedor fornecedorDel = em.getReference(Fornecedor.class, fornecedor.getId());
             tx.begin();
-            em.remove(funcionarioDel);
+            em.remove(fornecedorDel);
             tx.commit();
         } catch (Exception e) {
             System.out.println("------>" + e);
         }
     }
+    
 }
