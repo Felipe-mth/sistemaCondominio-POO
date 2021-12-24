@@ -18,7 +18,7 @@ public class ApartamentosDAO implements crudDAO<Apartamentos>{
     public List<Apartamentos> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = (Query) em.createQuery("select a from Apartamentos a", Apartamentos.class);
-
+        @SuppressWarnings("unchecked")
         List<Apartamentos> apartamentos = q.getResultList();
 
         return apartamentos;
@@ -34,6 +34,7 @@ public class ApartamentosDAO implements crudDAO<Apartamentos>{
         try {
             String consultaId = "from Apartamentos where id=" + id;
             Query q = (Query) em.createQuery(consultaId);
+            @SuppressWarnings("unchecked")
             List<Apartamentos> apartamentosId = q.getResultList();
             int index = -1;
 
@@ -68,8 +69,19 @@ public class ApartamentosDAO implements crudDAO<Apartamentos>{
 
     @Override
     public void updateDados(Apartamentos apart) {
-        // TODO Auto-generated method stub
-        
+        try {
+            System.out.println("======================================");
+
+            tx.begin();
+            em.merge(apart);
+            tx.commit();
+            em.close();
+
+            System.out.println("======================================");
+        } catch (Exception error) {
+            System.out.println("=====================================\n" +
+                    "Deu errado --> " + error);
+        }
     }
 
     @Override

@@ -19,7 +19,7 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
     public List<Funcionario> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = (Query) em.createQuery("select a from Funcionario a", Funcionario.class);
-
+        @SuppressWarnings("unchecked")
         List<Funcionario> funcionarios = q.getResultList();
 
         return funcionarios;
@@ -30,6 +30,7 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
         try {
             String consultaId = "from Funcionario where nome=" + nome;
             Query q = (Query) em.createQuery(consultaId);
+            @SuppressWarnings("unchecked")
             List<Funcionario> funcionariosId = q.getResultList();
             int index = -1;
 
@@ -50,6 +51,7 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
         try {
             String consultaId = "from Funcionario where id=" + id;
             Query q = (Query) em.createQuery(consultaId);
+            @SuppressWarnings("unchecked")
             List<Funcionario> funcionariosId = q.getResultList();
             int index = -1;
 
@@ -84,8 +86,19 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
 
     @Override
     public void updateDados(Funcionario func) {
-        // TODO Auto-generated method stub
-        
+        try {
+            System.out.println("======================================");
+
+            tx.begin();
+            em.merge(func);
+            tx.commit();
+            em.close();
+
+            System.out.println("======================================");
+        } catch (Exception error) {
+            System.out.println("=====================================\n" +
+                    "Deu errado --> " + error);
+        }
     }
 
     @Override

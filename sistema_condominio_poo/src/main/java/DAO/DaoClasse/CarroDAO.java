@@ -17,7 +17,7 @@ public class CarroDAO implements crudDAO<Carro> {
     public List<Carro> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = (Query) em.createQuery("select a from Carro a", Carro.class);
-
+        @SuppressWarnings("unchecked")
         List<Carro> autos = q.getResultList();
 
         return autos;
@@ -27,6 +27,7 @@ public class CarroDAO implements crudDAO<Carro> {
         try {
             String consultaId = "from Carro where placa=" + id;
             Query q = (Query) em.createQuery(consultaId);
+            @SuppressWarnings("unchecked")
             List<Carro> carroId = q.getResultList();
             int index = -1;
 
@@ -47,6 +48,7 @@ public class CarroDAO implements crudDAO<Carro> {
         try {
             String consultaId = "from Carro where modelo=" + nome;
             Query q = (Query) em.createQuery(consultaId);
+            @SuppressWarnings("unchecked")
             List<Carro> carroNome = q.getResultList();
             
             int index = -1;
@@ -93,5 +95,18 @@ public class CarroDAO implements crudDAO<Carro> {
     }
 
     public void updateDados(Carro carro) {
+        try {
+            System.out.println("======================================");
+
+            tx.begin();
+            em.merge(carro);
+            tx.commit();
+            em.close();
+
+            System.out.println("======================================");
+        } catch (Exception error) {
+            System.out.println("=====================================\n" +
+                    "Deu errado --> " + error);
+        }
     }
 }

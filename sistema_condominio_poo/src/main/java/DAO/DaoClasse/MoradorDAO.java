@@ -19,7 +19,7 @@ public class MoradorDAO implements crudDAO<Morador> {
     public List<Morador> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = (Query) em.createQuery("select a from Morador a", Morador.class);
-
+        @SuppressWarnings("unchecked")
         List<Morador> moradores = q.getResultList();
         return moradores;
     }
@@ -29,6 +29,7 @@ public class MoradorDAO implements crudDAO<Morador> {
         try {
             String consultaId = "from Morador where nome=" + nome;
             Query q = (Query) em.createQuery(consultaId);
+            @SuppressWarnings("unchecked")
             List<Morador> moradoresId = q.getResultList();
             int index = -1;
 
@@ -49,6 +50,7 @@ public class MoradorDAO implements crudDAO<Morador> {
         try {
             String consultaId = "from Morador where id=" + id;
             Query q = (Query) em.createQuery(consultaId);
+            @SuppressWarnings("unchecked")
             List<Morador> moradoresId = q.getResultList();
             int index = -1;
 
@@ -83,8 +85,19 @@ public class MoradorDAO implements crudDAO<Morador> {
 
     @Override
     public void updateDados(Morador morador) {
-        // TODO Auto-generated method stub
-        
+        try {
+            System.out.println("======================================");
+
+            tx.begin();
+            em.merge(morador);
+            tx.commit();
+            em.close();
+
+            System.out.println("======================================");
+        } catch (Exception error) {
+            System.out.println("=====================================\n" +
+                    "Deu errado --> " + error);
+        }
     }
 
     @Override

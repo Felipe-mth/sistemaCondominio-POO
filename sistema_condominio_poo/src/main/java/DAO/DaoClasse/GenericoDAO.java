@@ -15,7 +15,7 @@ public class GenericoDAO{
     public List<Object> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = (Query) em.createQuery("select a from Object a", Object.class);
-
+        @SuppressWarnings("unchecked")
         List<Object> consulta = q.getResultList();
 
         return consulta;
@@ -25,6 +25,7 @@ public class GenericoDAO{
         try {
             String consultaId = "from"+ classe  +"where id=" + id;
             Query q = (Query) em.createQuery(consultaId);
+            @SuppressWarnings("unchecked")
             List<Object> objID = q.getResultList();
 
             return objID.get(0);
@@ -39,6 +40,7 @@ public class GenericoDAO{
         try {
             String consultaId = "from Object where nome=" + nome;
             Query q = (Query) em.createQuery(consultaId);
+            @SuppressWarnings("unchecked")
             List<Object> objNome = q.getResultList();
 
             return objNome;
@@ -76,6 +78,19 @@ public class GenericoDAO{
         }
     }
 
-    public void updateDados(Object carro) {
+    public void updateDados(Object obj) {
+        try {
+            System.out.println("======================================");
+
+            tx.begin();
+            em.merge(obj);
+            tx.commit();
+            em.close();
+
+            System.out.println("======================================");
+        } catch (Exception error) {
+            System.out.println("=====================================\n" +
+                    "Deu errado --> " + error);
+        }
     }
 }

@@ -19,7 +19,7 @@ public class FornecedorDAO implements crudDAO<Fornecedor>{
     public List<Fornecedor> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = (Query) em.createQuery("select a from Fornecedor a", Fornecedor.class);
-
+        @SuppressWarnings("unchecked")
         List<Fornecedor> fornecedores = q.getResultList();
 
         return fornecedores;
@@ -30,6 +30,7 @@ public class FornecedorDAO implements crudDAO<Fornecedor>{
         try {
             String consultaId = "from Fornecedor where nome=" + nome;
             Query q = (Query) em.createQuery(consultaId);
+            @SuppressWarnings("unchecked")
             List<Fornecedor> fornecedoresId = q.getResultList();
             int index = -1;
 
@@ -50,6 +51,7 @@ public class FornecedorDAO implements crudDAO<Fornecedor>{
         try {
             String consultaId = "from Fornecedor where id=" + id;
             Query q = (Query) em.createQuery(consultaId);
+            @SuppressWarnings("unchecked")
             List<Fornecedor> fornecedoresId = q.getResultList();
             int index = -1;
 
@@ -84,8 +86,19 @@ public class FornecedorDAO implements crudDAO<Fornecedor>{
 
     @Override
     public void updateDados(Fornecedor fornecedor) {
-        // TODO Auto-generated method stub
-        
+        try {
+            System.out.println("======================================");
+
+            tx.begin();
+            em.merge(fornecedor);
+            tx.commit();
+            em.close();
+
+            System.out.println("======================================");
+        } catch (Exception error) {
+            System.out.println("=====================================\n" +
+                    "Deu errado --> " + error);
+        }
     }
 
     @Override
