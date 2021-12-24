@@ -1,9 +1,9 @@
 
 package poo.sistema_condominio;
 
-import Entidades.Produtos;
-import Entidades.Fornecedor;
-import Entidades.Endereco;
+import Model.Produtos;
+import Model.Fornecedor;
+import Model.Endereco;
 import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;

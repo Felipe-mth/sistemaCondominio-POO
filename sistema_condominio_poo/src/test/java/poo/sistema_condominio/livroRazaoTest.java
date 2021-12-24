@@ -2,9 +2,9 @@
 package poo.sistema_condominio;
 import processos.livroDiario;
 import processos.livroRazao;
-import Entidades.Fornecedor;
-import Entidades.Produtos;
-import Entidades.Endereco;
+import Model.Fornecedor;
+import Model.Produtos;
+import Model.Endereco;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;

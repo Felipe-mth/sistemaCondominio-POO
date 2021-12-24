@@ -1,6 +1,6 @@
 package processos;
 
-import Entidades.*;
+import Model.*;
 import java.util.ArrayList;
 //import java.util.Scanner;
 import javax.persistence.Entity;

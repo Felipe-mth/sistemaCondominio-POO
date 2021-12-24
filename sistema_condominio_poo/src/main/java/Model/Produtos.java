@@ -1,4 +1,4 @@
-package Entidades;
+package Model;
 
 //import processos.*;
 import java.util.Date;
@@ -30,9 +30,12 @@ public class Produtos {
     private Date dataEntrega;
     private Date dataSaida;
 
-    Produtos(int i, int i0, Fornecedor f, int i1, String pentoprazol, int i2) {
-        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
-                                                                       // Tools | Templates.
+    public Produtos(Fornecedor fornecedor, int quantidadeMinima, double preco, String nome, int quantidade) {
+        this.fornecedor = fornecedor;
+        this.quantidadeMinima = quantidadeMinima;
+        this.preco = preco;
+        this.nome = nome;
+        this.quantidade = quantidade;
     }
 
     public void setId(int id) {
@@ -67,10 +70,6 @@ public class Produtos {
         return this.dataSaida;
     }
 
-    public Produtos(Fornecedor fornecedor, double preco, String nome) {
-        this.fornecedor = fornecedor;
-        this.preco = preco;
-    }
 
     public int getQuantidadeMinima() {
         return quantidadeMinima;

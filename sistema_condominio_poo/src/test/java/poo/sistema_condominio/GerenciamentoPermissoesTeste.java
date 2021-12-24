@@ -1,6 +1,6 @@
 package poo.sistema_condominio;
 
-import Entidades.Carro;
+import Model.Carro;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 

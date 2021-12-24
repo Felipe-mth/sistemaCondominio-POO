@@ -1,4 +1,4 @@
-package Entidades;
+package Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,19 +13,14 @@ public class Carro {
     private String placa;
 
     @ManyToOne                      //ainda n
-    private Pessoa pessoa;
+    private Morador dono;
 
-    //private Morador morador;
-    
-    private String vaga;
     private String modelo;
 
-    public Carro(){}
-
-    public Carro(String placa, String vaga, String modelo) {
+    public Carro(String placa, String modelo, Morador dono) {
         this.placa = placa;
-        this.vaga = vaga;
         this.modelo = modelo;
+        this.dono = dono;
     }
 
     public String getPlaca() {
@@ -36,14 +31,6 @@ public class Carro {
         this.placa = placa;
     }
 
-    public String getVaga() {
-        return vaga;
-    }
-
-    public void setVaga(String vaga) {
-        this.vaga = vaga;
-    }
-
     public String getModelo() {
         return modelo;
     }
@@ -51,10 +38,10 @@ public class Carro {
         this.modelo = modelo;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Morador getDono() {
+        return dono;
     }
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setDono(Morador dono) {
+        this.dono = dono;
     }
 }

@@ -1,6 +1,6 @@
 package processos;
 
-import Entidades.Produtos;
+import Model.Produtos;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

@@ -2,8 +2,6 @@ package DAO.interfaces;
 
 import java.util.List;
 
-import javax.management.ObjectInstance;
-
 public interface crudDAO<OBJ> {
 
     public List<OBJ> findAll();

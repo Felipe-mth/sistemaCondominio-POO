@@ -7,6 +7,8 @@ package condominio.poo;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import Model.*;
+
 
 
 public class App {
@@ -34,6 +36,11 @@ public class App {
         }
         //parte 1
         //parte2
+        
+        /*
+        Endereco e = new Endereco("123", "bairro", "cidade", "estado", "pais", 666);
+        Funcionario func = new Funcionario("asdasd", e, "gestor", 456.7, "asd", "asdasd", "Jerso");
+        */
     }
 }
 

@@ -1,4 +1,4 @@
-package Entidades;
+package Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,23 +9,25 @@ import javax.persistence.Table;
 public class Pessoa {
 
     @Id
-    private String CPF;
-
+    private String cpfCNPJ;
+    
+    private Endereco endereco;
     private String telefone;
     private String nome;
     
-    public Pessoa(String cpf, String telefone, String nome){
-        this.CPF = cpf;
+    public Pessoa(String cpfCNPJ, String telefone, String nome, Endereco endereco){
+        this.cpfCNPJ = cpfCNPJ;
         this.telefone = telefone;
         this.nome = nome;
+        this.endereco = endereco;
     }
 
-    public String getCPF() {
-        return CPF;
+    public String getCpfCnpj() {
+        return cpfCNPJ;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCpfCnpj(String cpfCNPJ) {
+        this.cpfCNPJ = cpfCNPJ;
     }
 
     public String getTelefone() {
@@ -44,5 +46,12 @@ public class Pessoa {
         this.nome = nome;
     }
     
+    public Endereco getEndereco() {
+        return this.endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
     
 }

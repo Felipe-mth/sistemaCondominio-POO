@@ -6,13 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import org.hibernate.criterion.SizeExpression;
-
 import condominio.poo.JPAUtil;
-import DAO.interfaces.*;
-import Entidades.*;
-
-
 
 public class GenericoDAO {
     public EntityManager em = JPAUtil.getEntityManager();

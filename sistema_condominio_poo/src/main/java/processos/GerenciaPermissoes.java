@@ -1,6 +1,6 @@
 package processos;
 
-import Entidades.*;
+import Model.*;
 
 public class GerenciaPermissoes {
 

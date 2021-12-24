@@ -1,7 +1,7 @@
 package poo.sistema_condominio;
-import Entidades.Apartamentos;
-import Entidades.Carro;
-import Entidades.Morador;
+import Model.Apartamentos;
+import Model.Carro;
+import Model.Morador;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

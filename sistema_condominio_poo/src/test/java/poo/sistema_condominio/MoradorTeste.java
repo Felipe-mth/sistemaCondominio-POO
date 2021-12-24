@@ -5,8 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import Entidades.Carro;
-import Entidades.Morador;
+import Model.Carro;
+import Model.Morador;
 
 
 public class MoradorTeste {

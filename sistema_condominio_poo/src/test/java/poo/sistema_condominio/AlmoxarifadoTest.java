@@ -5,10 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 
 import processos.Almoxarifado;
-import Entidades.Endereco;
-import Entidades.Fornecedor;
-import Entidades.Funcionario;
-import Entidades.Produtos;
+import Model.Endereco;
+import Model.Fornecedor;
+import Model.Funcionario;
+import Model.Produtos;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
