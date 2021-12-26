@@ -96,14 +96,7 @@ public class livroRazao{
         }
     }
 
-    public void verHistorico() {
-        for (int i = 0; i < livrosDiarios.size(); i++) {
-            livrosDiarios.get(i).getId();
-            livrosDiarios.get(i).getData();
-            livrosDiarios.get(i).listagem();
-        }
-    }
-
+    
     public void setDespesa() {
         for (int i = 0; i < livrosDiarios.size(); i++) {
             this.despesa += livrosDiarios.get(i).verGastos();
@@ -127,9 +120,17 @@ public class livroRazao{
             System.out.println("O balanço do mes foi neutro \n");
         }
         else{
-           System.out.println("O balanço do mes foi negativo \n");
+            System.out.println("O balanço do mes foi negativo \n");
         }
         
         return this.saldo;
+    }
+    
+    public void verHistorico() {
+        for (int i = 0; i < livrosDiarios.size(); i++) {
+            livrosDiarios.get(i).getId();
+            livrosDiarios.get(i).getData();
+            livrosDiarios.get(i).listagem();
+        }
     }
 }

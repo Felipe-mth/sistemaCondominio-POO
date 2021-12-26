@@ -1,15 +1,15 @@
-package processos;
+package Model;
 
-import Model.*;
-
-public class GerenciaPermissoes {
-
+public class Visitas extends Pessoa {
     private int horarioVisita;
     private int periodoVisita;
     private int dataVisita;
-    private Pessoa pessoa;
-    private Apartamentos apartamento;
-
+    private Morador moradorVisitado;
+    
+    public Visitas(String cpfCNPJ, String telefone, String nome, Endereco endereco) {
+        super(cpfCNPJ, telefone, nome, endereco);
+    }
+    
     public int getHorarioVisita() {
         return horarioVisita;
     }
@@ -34,20 +34,11 @@ public class GerenciaPermissoes {
         this.dataVisita = dataVisita;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Morador getMoradorVisitado() {
+        return this.moradorVisitado;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setMoradorVisitado(Morador moradorVisitado) {
+        this.moradorVisitado = moradorVisitado;
     }
-
-    public Apartamentos getApartamento() {
-        return apartamento;
-    }
-
-    public void setApartamento(Apartamentos apartamento) {
-        this.apartamento = apartamento;
-    }
-
 }

@@ -48,6 +48,21 @@ public class livroDiario {
     public String getData() {
         return this.data;
     }
+    
+    public double verGastos() {
+        return this.gastoDeProduto;
+    }
+
+    
+    public void livro(livroRazao livro){
+        this.livroRazao = livro;
+    }
+    
+    public void setGastosProdutos() {
+        for (int i = 0; i < produtos.size(); i++) {
+            this.gastoDeProduto = this.gastoDeProduto + produtos.get(i).getPreco();
+        }
+    }
 
     public void adicionarLista(Object produto) {
         produtos.add((Produtos) produto);
@@ -65,21 +80,4 @@ public class livroDiario {
             System.out.println(produtos.get(i).getQuantidadeMinima());
         }
     }
-
-    public void calcularGastos() {
-        for (int i = 0; i < produtos.size(); i++) {
-            this.gastoDeProduto = this.gastoDeProduto + produtos.get(i).getPreco();
-            System.out.println(this.gastoDeProduto);
-            System.out.println(produtos.get(i).getPreco());
-        }
-    }
-
-    public double verGastos() {
-        return this.gastoDeProduto;
-    }
-    
-    public void livro(livroRazao livro){
-        this.livroRazao = livro;
-    }
-
 }
