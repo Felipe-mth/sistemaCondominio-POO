@@ -1,12 +1,6 @@
 package Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -18,10 +12,14 @@ public class Pessoa {
     
     private String cpfCnpj;
     
+    @OneToOne
     private Endereco endereco;
     private String telefone;
     private String nome;
-    
+
+    public Pessoa() {
+    }
+
     public Pessoa(String cpfCNPJ, String telefone, String nome, Endereco endereco){
         this.cpfCnpj = cpfCNPJ;
         this.telefone = telefone;

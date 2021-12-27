@@ -17,6 +17,9 @@ public class Carro {
 
     private String modelo;
 
+    public Carro() {
+    }
+
     public Carro(String placa, String modelo, Morador dono) {
         this.placa = placa;
         this.modelo = modelo;

@@ -17,7 +17,10 @@ public class Endereco {
     private String cidade;
     private String estado;
     private String pais;
-    
+
+    public Endereco() {
+    }
+
     public Endereco(String rua, String bairro, String cidade, String estado, String pais, int numero) {
         this.rua    = rua;
         this.bairro = bairro;
@@ -69,4 +72,6 @@ public class Endereco {
         this.pais = pais;
     }
 
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 }

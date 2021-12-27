@@ -19,7 +19,10 @@ public class Apartamentos {
 
     private int andar;
     private int bloco;
-    
+
+    public Apartamentos() {
+    }
+
     public Apartamentos(int numeroDoApartamento, int andar, int bloco) {
         this.numeroDoApartamento = numeroDoApartamento;
         this.andar = andar;
