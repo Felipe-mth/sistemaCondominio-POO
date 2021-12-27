@@ -1,5 +1,12 @@
 package Model;
 
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+@Entity
+@PrimaryKeyJoinColumn(name="id")
+@Table(name = "Visitas")
 public class Visitas extends Pessoa {
     private int horarioVisita;
     private int periodoVisita;
