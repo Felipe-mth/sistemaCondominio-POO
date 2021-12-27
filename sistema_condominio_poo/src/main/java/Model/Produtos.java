@@ -12,23 +12,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Produtos")
 public class Produtos {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @ManyToOne
     private Fornecedor fornecedor;
-   // @ManyToOne
-   // private livroDiario livroDiario;
-  //  @ManyToOne
-  //  private Almoxarifado almoxarifado;
-    
     private int quantidadeMinima;
     private double preco;
     private String nome;
     private int quantidade;
-    private Date dataEntrega;
-    private Date dataSaida;
 
     public Produtos(Fornecedor fornecedor, int quantidadeMinima, double preco, String nome, int quantidade) {
         this.fornecedor = fornecedor;
@@ -53,23 +44,6 @@ public class Produtos {
     public String getNome() {
         return this.nome;
     }
-
-    public void setDataEntrega(Date data) {
-        this.dataEntrega = data;
-    }
-
-    public Date getDataEntrega() {
-        return this.dataEntrega;
-    }
-
-    public void setDataSaida(Date data) {
-        this.dataSaida = data;
-    }
-
-    public Date getDataSaida() {
-        return this.dataSaida;
-    }
-
 
     public int getQuantidadeMinima() {
         return quantidadeMinima;
@@ -102,10 +76,4 @@ public class Produtos {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    /*public void setlivroDiario(livroDiario livro){
-        this.livroDiario = livro;
-    }
-    public void setAlmoxarifado(Almoxarifado armazem){
-        this.almoxarifado = armazem;
-    }*/
 }
