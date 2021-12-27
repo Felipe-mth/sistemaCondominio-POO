@@ -1,7 +1,7 @@
 package DAO.DaoClasse;
 
 import DAO.interfaces.crudDAO;
-import Model.Endereco;
+import Model.Almoxarifado;
 import condominio.poo.JPAUtil;
 
 import javax.persistence.EntityManager;
@@ -9,34 +9,34 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
-public class EnderecoDAO implements crudDAO<Endereco> {
+public class AlmoxarifadoDAO implements crudDAO<Almoxarifado> {
     public EntityManager em = JPAUtil.getEntityManager();
     public EntityTransaction tx = em.getTransaction();
 
     @Override
-    public List<Endereco> findAll() {
+    public List<Almoxarifado> findAll() {
         System.out.println("-----------CONSULTA--------------");
-        Query q = (Query) em.createQuery("select a from Endereco a", Endereco.class);
+        Query q = (Query) em.createQuery("select a from Almoxarifado a", Almoxarifado.class);
         @SuppressWarnings("unchecked")
-        List<Endereco> enderecos = q.getResultList();
+        List<Almoxarifado> almoxarifado = q.getResultList();
 
-        return enderecos;
+        return almoxarifado;
     }
 
-    public Endereco findById(int id) {
+    public Almoxarifado findById(int id) {
         try {
-            String consultaId = "from Apartamentos where id=" + id;
+            String consultaId = "from Almoxarifado where id=" + id;
             Query q = (Query) em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
-            List<Endereco> enderecosId = q.getResultList();
+            List<Almoxarifado> almoxarifadoId = q.getResultList();
             int index = -1;
 
-            for(int i = 0; i < enderecosId.size(); i++) {
-                if(enderecosId.get(i).getId() == id) {
+            for(int i = 0; i < almoxarifadoId.size(); i++) {
+                if(almoxarifadoId.get(i).getId() == id) {
                     index = i;
                 }
             }
-            return enderecosId.get(index);
+            return almoxarifadoId.get(index);
         } catch (Exception e) {
             System.out.println("------>" + e);
             return null;
@@ -44,17 +44,17 @@ public class EnderecoDAO implements crudDAO<Endereco> {
     }
 
     @Override
-    public Endereco findByName(String nome) {
+    public Almoxarifado findByName(String nome) {
         return null;
     }
 
     @Override
-    public void insertDados(Endereco endereco) {
+    public void insertDados(Almoxarifado almoxarifado) {
         try {
             System.out.println("======================================");
 
             tx.begin();
-            em.persist(endereco);
+            em.persist(almoxarifado);
             tx.commit();
             em.close();
 
@@ -66,12 +66,12 @@ public class EnderecoDAO implements crudDAO<Endereco> {
     }
 
     @Override
-    public void updateDados(Endereco endereco) {
+    public void updateDados(Almoxarifado almoxarifado) {
         try {
             System.out.println("======================================");
 
             tx.begin();
-            em.merge(endereco);
+            em.merge(almoxarifado);
             tx.commit();
             em.close();
 
@@ -83,11 +83,11 @@ public class EnderecoDAO implements crudDAO<Endereco> {
     }
 
     @Override
-    public void deleteDados(Endereco endereco) {
+    public void deleteDados(Almoxarifado almoxarifado) {
         try {
-            Endereco enderecoDel = em.getReference(Endereco.class, endereco.getId());
+            Almoxarifado almoxarifadoDel = em.getReference(Almoxarifado.class, almoxarifado.getId());
             tx.begin();
-            em.remove(enderecoDel);
+            em.remove(almoxarifadoDel);
             tx.commit();
         } catch (Exception e) {
             System.out.println("------>" + e);
