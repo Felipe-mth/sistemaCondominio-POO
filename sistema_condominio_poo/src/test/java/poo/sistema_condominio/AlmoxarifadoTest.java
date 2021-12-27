@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 
-import processos.Almoxarifado;
+import Model.Almoxarifado;
 import Model.Endereco;
 import Model.Fornecedor;
 import Model.Funcionario;

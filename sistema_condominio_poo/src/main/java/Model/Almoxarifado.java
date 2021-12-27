@@ -1,6 +1,5 @@
-package processos;
+package Model;
 
-import Model.*;
 import java.util.ArrayList;
 //import java.util.Scanner;
 import javax.persistence.Entity;
@@ -16,13 +15,10 @@ import javax.persistence.Table;
 public class Almoxarifado {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-    
     @OneToOne
     private Funcionario funcionario;
-    
     private String telefone;
     private String email;
-
     private ArrayList<Produtos> produtos;
 
     public Almoxarifado(int id,Funcionario funcionario, String telefone, String email) {
