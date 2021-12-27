@@ -25,7 +25,7 @@ public class EnderecoDAO implements crudDAO<Endereco> {
 
     public Endereco findById(int id) {
         try {
-            String consultaId = "from Apartamentos where id=" + id;
+            String consultaId = "from Endereco where id=" + id;
             Query q = (Query) em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
             List<Endereco> enderecosId = q.getResultList();
