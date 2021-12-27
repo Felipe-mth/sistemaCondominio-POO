@@ -17,11 +17,11 @@ public class EspacoDAO implements crudDAO<Espaco>{
     @Override
     public List<Espaco> findAll() {
         System.out.println("-----------CONSULTA--------------");
-        Query q = (Query) em.createQuery("select a from Produtos a", Espaco.class);
+        Query q = (Query) em.createQuery("select a from Espaco a", Espaco.class);
         @SuppressWarnings("unchecked")
-        List<Espaco> visitantes = q.getResultList();
+        List<Espaco> listaDeEspacos = q.getResultList();
 
-        return visitantes;
+        return listaDeEspacos;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class EspacoDAO implements crudDAO<Espaco>{
             int index = -1;
 
             for(int i = 0; i < espacoId.size(); i++) {
-                if(espacoId.get(i).getIdmorador() == id) {
+                if(espacoId.get(i).getId() == id) {
                     index = i;
                 }
             }
@@ -87,7 +87,7 @@ public class EspacoDAO implements crudDAO<Espaco>{
     @Override
     public void deleteDados(Espaco espaco) {
         try {
-            Espaco espacoDel = em.getReference(Espaco.class, espaco.getIdmorador());
+            Espaco espacoDel = em.getReference(Espaco.class, espaco.getId());
             tx.begin();
             em.remove(espacoDel);
             tx.commit();

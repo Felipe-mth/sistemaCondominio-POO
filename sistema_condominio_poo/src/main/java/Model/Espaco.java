@@ -10,13 +10,14 @@ import javax.persistence.Table;
 @Table(name = "Espaco")
 public class Espaco {
     @Id
-    private int idmorador;
-
+    private int id;
+    private Morador morador;
     private Data data;
 
-    public Espaco(Data data, int idmorador) {
+    public Espaco(Data data, int id, Morador morador) {
         this.data = data;
-        this.idmorador = idmorador;
+        this.id = id;
+        this.morador = morador;
     }
 
     public Data getData() {
@@ -26,10 +27,18 @@ public class Espaco {
         this.data = data;
     }
 
-    public int getIdmorador() {
-        return idmorador;
+    public int getId() {
+        return id;
     }
-    public void setIdmorador(int idmorador) {
-        this.idmorador = idmorador;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Morador getMorador() {
+        return this.morador;
+    }
+
+    public void setMorador(Morador morador) {
+        this.morador = morador;
     }
 }

@@ -72,8 +72,6 @@ public class livroDiario {
         for (int i = 0; i < produtos.size(); i++) {
             System.out.println(produtos.get(i).getId());
             System.out.println(produtos.get(i).getNome());
-            System.out.println(produtos.get(i).getDataEntrega());
-            System.out.println(produtos.get(i).getDataSaida());
             System.out.println(produtos.get(i).getFornecedor().getNome());
             System.out.println(produtos.get(i).getPreco());
             System.out.println(produtos.get(i).getQuantidade());
