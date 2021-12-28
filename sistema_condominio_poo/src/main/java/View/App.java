@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class App extends Application {
 
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("resources/JavaFX/Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/JavaFX/App.fxml"));
         Parent parent = fxmlLoader.load();
         Scene scene = new Scene(parent, 320, 240);
         stage.setTitle("Hello!");
