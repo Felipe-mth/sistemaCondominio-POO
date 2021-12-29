@@ -1,15 +1,14 @@
 package processos;
 
+import Model.Transacao;
+
 import java.util.ArrayList;
+import java.util.List;
 
 //import java.util.Date;//n esta sendo usado nessa class todas as chamadas ja são retiradas das outras classes
 //import java.util.Calendar; //caso queira usar calendario
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "livroRazao")
@@ -22,16 +21,29 @@ public class livroRazao{
     private String modificadoPor;
     private double despesa;
     private double saldo;
-    private final double montante;
-    ArrayList<livroDiario> livrosDiarios = new ArrayList<>();   // coloquei apenas o <>, na declaração do new arraylist.
-    
-    public livroRazao(int id, int mes,String criadoPor, double montante){
-        this.Id = id;
+    private double montante;
+
+
+    @OneToMany(mappedBy = "livroRazao", orphanRemoval = true)
+    List<livroDiario> livrosDiarios = new ArrayList<>();   // coloquei apenas o <>, na declaração do new arraylist.
+
+    public void setLivrosDiarios(List<livroDiario> livrosDiarios) {
+        this.livrosDiarios = livrosDiarios;
+    }
+
+    public List<livroDiario> getLivrosDiarios() {
+        return livrosDiarios;
+    }
+
+    public livroRazao() {
+    }
+
+    public livroRazao(int mes,String criadoPor, double montante){
         this.mes = mes;
         this.criadoPor = criadoPor;
         this.montante = montante;
     }
-    
+
     public void setId(int id) {
         this.Id = id;
     }
@@ -83,7 +95,7 @@ public class livroRazao{
     public String getModificadoPor() {
         return this.modificadoPor;
     }
-
+/*
     public void adicionarAoHistorico(livroDiario livroDiario) {
         int valor = livroDiario.getDate().getMonth() + 1; // o +1 é pq ele identifica janeiro como 0 e n como 1
         // esse erro em getMonth() é apenas informando que essa função esta ultrapadsada, pois existe a biblioteca Calendario no momento.
@@ -94,14 +106,16 @@ public class livroRazao{
         else{
             System.out.println("Os meses são incompativeis");
         }
+    }//????
+    */
+
+    public void addLivroDiario(livroDiario livroDiario) {
+        this.livrosDiarios.add(livroDiario);
+        this.despesa += livroDiario.getValorSaida();
+        this.montante += livroDiario.getValorEntrada();
+        this.saldo += (livroDiario.getValorEntrada() - livroDiario.getValorSaida());
     }
 
-    
-    public void setDespesa() {
-        for (int i = 0; i < livrosDiarios.size(); i++) {
-            this.despesa += livrosDiarios.get(i).verGastos();
-        }
-    }
     public double getDespesa(){
         return this.despesa;
     }
@@ -112,7 +126,7 @@ public class livroRazao{
         this.saldo = this.montante - this.despesa;
     }
     
-    public double getSaldo(){
+    /*public double getSaldo(){
         if(this.saldo> 0){
             System.out.println("O balanço do mes foi positivo \n");
         }
@@ -133,4 +147,10 @@ public class livroRazao{
             livrosDiarios.get(i).listagem();
         }
     }
+
+    public void setDespesa() {
+        for (int i = 0; i < livrosDiarios.size(); i++) {
+            this.despesa += livrosDiarios.get(i).verGastos();
+        }
+    }*/
 }
