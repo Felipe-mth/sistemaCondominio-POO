@@ -5,17 +5,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TransacaoMorador")
-public class TransacaoMorador extends Transacao{
+@Table(name = "TransacaoMoradores")
+public class TransacaoMoradores extends Transacao{
 
     @ManyToOne
     Morador morador;
 
-    public TransacaoMorador() {
+    public TransacaoMoradores() {
         super();
     }
 
-    public TransacaoMorador(double valor, String descricao, Morador morador) {
+    public TransacaoMoradores(double valor, String descricao, Morador morador) {
         super(valor, descricao);
         this.morador = morador;
     }
