@@ -2,13 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 //import java.util.Scanner;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Almoxarifado")
@@ -19,6 +13,7 @@ public class Almoxarifado {
     private Funcionario funcionario;
     private String telefone;
     private String email;
+    @ManyToMany
     private ArrayList<Produtos> produtos;
 
     public Almoxarifado(int id, Funcionario funcionario, String telefone, String email) {
@@ -26,6 +21,10 @@ public class Almoxarifado {
         this.funcionario = funcionario;
         this.telefone = telefone;
         this.email = email;
+    }
+
+    public Almoxarifado() {
+
     }
 
     public int getId() {

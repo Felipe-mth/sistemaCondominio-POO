@@ -12,7 +12,7 @@ public class Carro {
     @Id
     private String placa;
 
-    @ManyToOne                      //ainda n
+    @ManyToOne
     private Morador dono;
 
     private String modelo;

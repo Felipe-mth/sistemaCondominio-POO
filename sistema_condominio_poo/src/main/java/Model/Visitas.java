@@ -1,6 +1,7 @@
 package Model;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -11,12 +12,17 @@ public class Visitas extends Pessoa {
     private int horarioVisita;
     private int periodoVisita;
     private int dataVisita;
+    @OneToOne
     private Morador moradorVisitado;
     
     public Visitas(String cpfCNPJ, String telefone, String nome, Endereco endereco) {
         super(cpfCNPJ, telefone, nome, endereco);
     }
-    
+
+    public Visitas() {
+
+    }
+
     public int getHorarioVisita() {
         return horarioVisita;
     }

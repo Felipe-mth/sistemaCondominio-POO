@@ -28,6 +28,10 @@ public class Produtos {
         this.quantidade = quantidade;
     }
 
+    public Produtos() {
+
+    }
+
     public void setId(int id) {
         this.id = id;
     }

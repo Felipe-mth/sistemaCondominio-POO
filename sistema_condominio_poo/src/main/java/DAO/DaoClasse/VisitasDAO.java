@@ -34,7 +34,7 @@ public class VisitasDAO implements crudDAO<Visitas>{
             int index = -1;
 
             for(int i = 0; i < visitasName.size(); i++) {
-                if(visitasName.get(i).getNome() == nome) {
+                if(visitasName.get(i).getNome().equals(nome)) {
                     index = i;
                 }
             }

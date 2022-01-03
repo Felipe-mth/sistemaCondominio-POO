@@ -35,7 +35,7 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
             int index = -1;
 
             for(int i = 0; i < funcionariosId.size(); i++) {
-                if(funcionariosId.get(i).getNome() == nome) {
+                if(funcionariosId.get(i).getNome().equals(nome)) {
                     index = i;
                 }
             }

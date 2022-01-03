@@ -10,13 +10,7 @@ import javax.persistence.Table;
 public class Apartamentos {
 
     @Id //este 
-    private int numeroDoApartamento; 
-
-    /*
-    //@OneToMany
-    private Morador morador;
-    */
-
+    private int numeroDoApartamento;
     private int andar;
     private int bloco;
 

@@ -54,7 +54,7 @@ public class CarroDAO implements crudDAO<Carro> {
             int index = -1;
 
             for(int i = 0; i < carroNome.size(); i++) {
-                if(carroNome.get(i).getModelo() == nome) {
+                if(carroNome.get(i).getModelo().equals(nome)) {
                     index = i;
                 }
             }

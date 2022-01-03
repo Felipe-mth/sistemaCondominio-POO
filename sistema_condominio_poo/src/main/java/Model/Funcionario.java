@@ -9,17 +9,6 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name="id")
 @Table(name = "Funcionario")
 public class Funcionario extends Pessoa {
-    /*
-    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    */
-    /*
-    @OneToOne
-    private Endereco endereco;
-    
-    @OneToOne
-    private Pessoa pessoa;
-    */
     private String cargo;
     private double salario;
     private String turno;
@@ -31,6 +20,9 @@ public class Funcionario extends Pessoa {
         this.turno = turno;
     }
 
+    public Funcionario() {
+
+    }
 
     //metodos acessores
     public String getCargo() {

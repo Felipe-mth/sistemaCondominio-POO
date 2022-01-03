@@ -35,7 +35,7 @@ public class FornecedorDAO implements crudDAO<Fornecedor>{
             int index = -1;
 
             for(int i = 0; i < fornecedoresId.size(); i++) {
-                if(fornecedoresId.get(i).getNome() == nome) {
+                if(fornecedoresId.get(i).getNome().equals(nome)) {
                     index = i;
                 }
             }

@@ -34,7 +34,7 @@ public class MoradorDAO implements crudDAO<Morador> {
             int index = -1;
 
             for(int i = 0; i < moradoresId.size(); i++) {
-                if(moradoresId.get(i).getNome() == nome) {
+                if(moradoresId.get(i).getNome().equals(nome)) {
                     index = i;
                 }
             }

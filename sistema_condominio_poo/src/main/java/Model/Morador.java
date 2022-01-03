@@ -10,22 +10,8 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name="id")
 @Table(name = "Morador")
 public class Morador extends Pessoa {
-
-    /*
-    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    */
-    /*
-    @OneToOne
-    private Pessoa pessoa;
-    */
-    
     @ManyToOne
     private Apartamentos apartamento;
-
-    //@ManyToMany
-    //public Carro carro;
-
 
     public Morador(Apartamentos apartamento, String cpfCNPJ, String telefone, String nome, Endereco endereco) {
         super(cpfCNPJ, telefone, nome, endereco);
