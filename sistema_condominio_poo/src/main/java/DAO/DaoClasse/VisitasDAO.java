@@ -4,20 +4,17 @@ import java.util.List;
 
 import DAO.interfaces.crudDAO;
 import Model.Visitas;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import condominio.poo.JPAUtil;
+import conexaoBancoDeDados.JPAUtil;
 
 public class VisitasDAO implements crudDAO<Visitas>{
-    public EntityManager em = JPAUtil.getEntityManager();
-    public EntityTransaction tx = em.getTransaction();
+    JPAUtil connection = new JPAUtil();
 
     @Override
     public List<Visitas> findAll() {
         System.out.println("-----------CONSULTA--------------");
-        Query q = (Query) em.createQuery("select a from Produtos a", Visitas.class);
+        Query q = connection.em.createQuery("select a from Produtos a", Visitas.class);
         @SuppressWarnings("unchecked")
         List<Visitas> visitantes = q.getResultList();
 
@@ -28,7 +25,7 @@ public class VisitasDAO implements crudDAO<Visitas>{
     public Visitas findByName(String nome) {
         try {
             String consultaId = "from Visitas where nome=" + nome;
-            Query q = (Query) em.createQuery(consultaId);
+            Query q = connection.em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
             List<Visitas> visitasName = q.getResultList();
             int index = -1;
@@ -49,7 +46,7 @@ public class VisitasDAO implements crudDAO<Visitas>{
     public Visitas findById(int id) {
         try {
             String consultaId = "from Visitas where id=" + id;
-            Query q = (Query) em.createQuery(consultaId);
+            Query q = connection.em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
             List<Visitas> visitasId = q.getResultList();
             int index = -1;
@@ -71,10 +68,10 @@ public class VisitasDAO implements crudDAO<Visitas>{
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.persist(visitas);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.persist(visitas);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -88,10 +85,10 @@ public class VisitasDAO implements crudDAO<Visitas>{
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.merge(visitas);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.merge(visitas);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -104,10 +101,10 @@ public class VisitasDAO implements crudDAO<Visitas>{
     @Override
     public void deleteDados(Visitas visitas) {
         try {
-            Visitas visitasDel = em.getReference(Visitas.class, visitas.getId());
-            tx.begin();
-            em.remove(visitasDel);
-            tx.commit();
+            Visitas visitasDel = connection.em.getReference(Visitas.class, visitas.getId());
+            connection.tx.begin();
+            connection.em.remove(visitasDel);
+            connection.tx.commit();
         } catch (Exception e) {
             System.out.println("------>" + e);
         }

@@ -4,21 +4,17 @@ import DAO.interfaces.crudDAO;
 import Model.Fornecedor;
 
 import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import condominio.poo.JPAUtil;
+import conexaoBancoDeDados.JPAUtil;
 
 public class FornecedorDAO implements crudDAO<Fornecedor>{
-    public EntityManager em = JPAUtil.getEntityManager();
-    public EntityTransaction tx = em.getTransaction();
+    JPAUtil connection = new JPAUtil();
 
     @Override
     public List<Fornecedor> findAll() {
         System.out.println("-----------CONSULTA--------------");
-        Query q = (Query) em.createQuery("select a from Fornecedor a", Fornecedor.class);
+        Query q = connection.em.createQuery("select a from Fornecedor a", Fornecedor.class);
         @SuppressWarnings("unchecked")
         List<Fornecedor> fornecedores = q.getResultList();
 
@@ -29,7 +25,7 @@ public class FornecedorDAO implements crudDAO<Fornecedor>{
     public Fornecedor findByName(String nome) {
         try {
             String consultaId = "from Fornecedor where nome=" + nome;
-            Query q = (Query) em.createQuery(consultaId);
+            Query q = connection.em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
             List<Fornecedor> fornecedoresId = q.getResultList();
             int index = -1;
@@ -50,7 +46,7 @@ public class FornecedorDAO implements crudDAO<Fornecedor>{
     public Fornecedor findById(int id) {
         try {
             String consultaId = "from Fornecedor where id=" + id;
-            Query q = (Query) em.createQuery(consultaId);
+            Query q = connection.em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
             List<Fornecedor> fornecedoresId = q.getResultList();
             int index = -1;
@@ -72,10 +68,10 @@ public class FornecedorDAO implements crudDAO<Fornecedor>{
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.persist(fornecedor);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.persist(fornecedor);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -89,10 +85,10 @@ public class FornecedorDAO implements crudDAO<Fornecedor>{
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.merge(fornecedor);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.merge(fornecedor);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -104,10 +100,10 @@ public class FornecedorDAO implements crudDAO<Fornecedor>{
     @Override
     public void deleteDados(Fornecedor fornecedor) {
         try {
-            Fornecedor fornecedorDel = em.getReference(Fornecedor.class, fornecedor.getId());
-            tx.begin();
-            em.remove(fornecedorDel);
-            tx.commit();
+            Fornecedor fornecedorDel = connection.em.getReference(Fornecedor.class, fornecedor.getId());
+            connection.tx.begin();
+            connection.em.remove(fornecedorDel);
+            connection.tx.commit();
         } catch (Exception e) {
             System.out.println("------>" + e);
         }

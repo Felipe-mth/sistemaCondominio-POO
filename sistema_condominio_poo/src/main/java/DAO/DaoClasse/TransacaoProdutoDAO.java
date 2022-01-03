@@ -2,21 +2,17 @@ package DAO.DaoClasse;
 
 import DAO.interfaces.crudDAO;
 import Model.TransacaoProduto;
-import condominio.poo.JPAUtil;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+import conexaoBancoDeDados.JPAUtil;
 import javax.persistence.Query;
 import java.util.List;
 
 public class TransacaoProdutoDAO implements crudDAO<TransacaoProduto>{
-    public EntityManager em = JPAUtil.getEntityManager();
-    public EntityTransaction tx = em.getTransaction();
+    JPAUtil connection = new JPAUtil();
 
     @Override
     public List<TransacaoProduto> findAll() {
         System.out.println("-----------CONSULTA--------------");
-        Query q = (Query) em.createQuery("select a from TransacaoProduto a", TransacaoProduto.class);
+        Query q = connection.em.createQuery("select a from TransacaoProduto a", TransacaoProduto.class);
         @SuppressWarnings("unchecked")
         List<TransacaoProduto> transacaoProdutos = q.getResultList();
 
@@ -31,7 +27,7 @@ public class TransacaoProdutoDAO implements crudDAO<TransacaoProduto>{
     public TransacaoProduto findById(int id) {
         try {
             String consultaId = "from TransacaoProduto where id=" + id;
-            Query q = (Query) em.createQuery(consultaId);
+            Query q = connection.em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
             List<TransacaoProduto> transacaoProdutosId = q.getResultList();
             int index = -1;
@@ -53,10 +49,10 @@ public class TransacaoProdutoDAO implements crudDAO<TransacaoProduto>{
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.persist(transacaoProduto);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.persist(transacaoProduto);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -70,10 +66,10 @@ public class TransacaoProdutoDAO implements crudDAO<TransacaoProduto>{
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.merge(transacaoProduto);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.merge(transacaoProduto);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -85,10 +81,10 @@ public class TransacaoProdutoDAO implements crudDAO<TransacaoProduto>{
     @Override
     public void deleteDados(TransacaoProduto transacaoProduto) {
         try {
-            TransacaoProduto transacaoProdutoDel = em.getReference(TransacaoProduto.class, transacaoProduto.getId());
-            tx.begin();
-            em.remove(transacaoProdutoDel);
-            tx.commit();
+            TransacaoProduto transacaoProdutoDel = connection.em.getReference(TransacaoProduto.class, transacaoProduto.getId());
+            connection.tx.begin();
+            connection.em.remove(transacaoProdutoDel);
+            connection.tx.commit();
         } catch (Exception e) {
             System.out.println("------>" + e);
         }

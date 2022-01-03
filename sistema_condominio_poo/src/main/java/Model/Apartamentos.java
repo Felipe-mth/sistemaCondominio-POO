@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Table(name = "Apartamentos")
 public class Apartamentos {
 
-    @Id //este 
+    @Id
     private int numeroDoApartamento;
     private int andar;
     private int bloco;

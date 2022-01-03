@@ -4,20 +4,17 @@ import java.util.List;
 
 import DAO.interfaces.crudDAO;
 import Model.Produtos;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import condominio.poo.JPAUtil;
+import conexaoBancoDeDados.JPAUtil;
 
 public class ProdutosDAO implements crudDAO<Produtos>{
-    public EntityManager em = JPAUtil.getEntityManager();
-    public EntityTransaction tx = em.getTransaction();
+    JPAUtil connection = new JPAUtil();
 
     @Override
     public List<Produtos> findAll() {
         System.out.println("-----------CONSULTA--------------");
-        Query q = (Query) em.createQuery("select a from Produtos a", Produtos.class);
+        Query q = connection.em.createQuery("select a from Produtos a", Produtos.class);
         @SuppressWarnings("unchecked")
         List<Produtos> produtos = q.getResultList();
 
@@ -28,7 +25,7 @@ public class ProdutosDAO implements crudDAO<Produtos>{
     public Produtos findByName(String nome) {
         try {
             String consultaId = "from Produtos where nome=" + nome;
-            Query q = (Query) em.createQuery(consultaId);
+            Query q = connection.em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
             List<Produtos> produtosId = q.getResultList();
             int index = -1;
@@ -49,7 +46,7 @@ public class ProdutosDAO implements crudDAO<Produtos>{
     public Produtos findById(int id) {
         try {
             String consultaId = "from Produtos where id=" + id;
-            Query q = (Query) em.createQuery(consultaId);
+            Query q = connection.em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
             List<Produtos> produtosId = q.getResultList();
             int index = -1;
@@ -71,10 +68,10 @@ public class ProdutosDAO implements crudDAO<Produtos>{
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.persist(prod);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.persist(prod);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -88,10 +85,10 @@ public class ProdutosDAO implements crudDAO<Produtos>{
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.merge(prod);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.merge(prod);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -103,10 +100,10 @@ public class ProdutosDAO implements crudDAO<Produtos>{
     @Override
     public void deleteDados(Produtos prod) {
         try {
-            Produtos prodDel = em.getReference(Produtos.class, prod.getId());
-            tx.begin();
-            em.remove(prodDel);
-            tx.commit();
+            Produtos prodDel = connection.em.getReference(Produtos.class, prod.getId());
+            connection.tx.begin();
+            connection.em.remove(prodDel);
+            connection.tx.commit();
         } catch (Exception e) {
             System.out.println("------>" + e);
         }

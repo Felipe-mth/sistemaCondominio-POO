@@ -2,21 +2,18 @@ package DAO.DaoClasse;
 
 import DAO.interfaces.crudDAO;
 import Model.Endereco;
-import condominio.poo.JPAUtil;
+import conexaoBancoDeDados.JPAUtil;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
 public class EnderecoDAO implements crudDAO<Endereco> {
-    public EntityManager em = JPAUtil.getEntityManager();
-    public EntityTransaction tx = em.getTransaction();
+    JPAUtil connection = new JPAUtil();
 
     @Override
     public List<Endereco> findAll() {
         System.out.println("-----------CONSULTA--------------");
-        Query q = (Query) em.createQuery("select a from Endereco a", Endereco.class);
+        Query q = connection.em.createQuery("select a from Endereco a", Endereco.class);
         @SuppressWarnings("unchecked")
         List<Endereco> enderecos = q.getResultList();
 
@@ -26,7 +23,7 @@ public class EnderecoDAO implements crudDAO<Endereco> {
     public Endereco findById(int id) {
         try {
             String consultaId = "from Endereco where id=" + id;
-            Query q = (Query) em.createQuery(consultaId);
+            Query q = connection.em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
             List<Endereco> enderecosId = q.getResultList();
             int index = -1;
@@ -53,10 +50,10 @@ public class EnderecoDAO implements crudDAO<Endereco> {
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.persist(endereco);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.persist(endereco);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -70,10 +67,10 @@ public class EnderecoDAO implements crudDAO<Endereco> {
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.merge(endereco);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.merge(endereco);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -85,10 +82,10 @@ public class EnderecoDAO implements crudDAO<Endereco> {
     @Override
     public void deleteDados(Endereco endereco) {
         try {
-            Endereco enderecoDel = em.getReference(Endereco.class, endereco.getId());
-            tx.begin();
-            em.remove(enderecoDel);
-            tx.commit();
+            Endereco enderecoDel = connection.em.getReference(Endereco.class, endereco.getId());
+            connection.tx.begin();
+            connection.em.remove(enderecoDel);
+            connection.tx.commit();
         } catch (Exception e) {
             System.out.println("------>" + e);
         }

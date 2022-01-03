@@ -2,21 +2,18 @@ package DAO.DaoClasse;
 
 import DAO.interfaces.crudDAO;
 import Model.Almoxarifado;
-import condominio.poo.JPAUtil;
+import conexaoBancoDeDados.JPAUtil;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
 public class AlmoxarifadoDAO implements crudDAO<Almoxarifado> {
-    public EntityManager em = JPAUtil.getEntityManager();
-    public EntityTransaction tx = em.getTransaction();
+    JPAUtil connection = new JPAUtil();
 
     @Override
     public List<Almoxarifado> findAll() {
         System.out.println("-----------CONSULTA--------------");
-        Query q = (Query) em.createQuery("select a from Almoxarifado a", Almoxarifado.class);
+        Query q = connection.em.createQuery("select a from Almoxarifado a", Almoxarifado.class);
         @SuppressWarnings("unchecked")
         List<Almoxarifado> almoxarifado = q.getResultList();
 
@@ -26,7 +23,7 @@ public class AlmoxarifadoDAO implements crudDAO<Almoxarifado> {
     public Almoxarifado findById(int id) {
         try {
             String consultaId = "from Almoxarifado where id=" + id;
-            Query q = (Query) em.createQuery(consultaId);
+            Query q = connection.em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
             List<Almoxarifado> almoxarifadoId = q.getResultList();
             int index = -1;
@@ -53,10 +50,10 @@ public class AlmoxarifadoDAO implements crudDAO<Almoxarifado> {
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.persist(almoxarifado);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.persist(almoxarifado);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -70,10 +67,10 @@ public class AlmoxarifadoDAO implements crudDAO<Almoxarifado> {
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.merge(almoxarifado);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.merge(almoxarifado);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -85,10 +82,10 @@ public class AlmoxarifadoDAO implements crudDAO<Almoxarifado> {
     @Override
     public void deleteDados(Almoxarifado almoxarifado) {
         try {
-            Almoxarifado almoxarifadoDel = em.getReference(Almoxarifado.class, almoxarifado.getId());
-            tx.begin();
-            em.remove(almoxarifadoDel);
-            tx.commit();
+            Almoxarifado almoxarifadoDel = connection.em.getReference(Almoxarifado.class, almoxarifado.getId());
+            connection.tx.begin();
+            connection.em.remove(almoxarifadoDel);
+            connection.tx.commit();
         } catch (Exception e) {
             System.out.println("------>" + e);
         }

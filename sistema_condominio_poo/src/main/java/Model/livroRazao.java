@@ -1,7 +1,5 @@
 package Model;
 
-import Model.livroDiario;
-
 import java.util.ArrayList;
 import java.util.List;
 

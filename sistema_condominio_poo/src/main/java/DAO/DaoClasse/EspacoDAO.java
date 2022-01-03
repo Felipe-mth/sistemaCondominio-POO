@@ -3,21 +3,17 @@ import java.util.List;
 
 import DAO.interfaces.crudDAO;
 import Model.Espaco;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import condominio.poo.JPAUtil;
+import conexaoBancoDeDados.JPAUtil;
 
 public class EspacoDAO implements crudDAO<Espaco>{
-    
-    public EntityManager em = JPAUtil.getEntityManager();
-    public EntityTransaction tx = em.getTransaction();
+    JPAUtil connection = new JPAUtil();
 
     @Override
     public List<Espaco> findAll() {
         System.out.println("-----------CONSULTA--------------");
-        Query q = (Query) em.createQuery("select a from Espaco a", Espaco.class);
+        Query q = connection.em.createQuery("select a from Espaco a", Espaco.class);
         @SuppressWarnings("unchecked")
         List<Espaco> listaDeEspacos = q.getResultList();
 
@@ -32,7 +28,7 @@ public class EspacoDAO implements crudDAO<Espaco>{
     public Espaco findById(int id) {
         try {
             String consultaId = "from Espaco where id=" + id;
-            Query q = (Query) em.createQuery(consultaId);
+            Query q = connection.em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
             List<Espaco> espacoId = q.getResultList();
             int index = -1;
@@ -54,10 +50,10 @@ public class EspacoDAO implements crudDAO<Espaco>{
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.persist(espaco);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.persist(espaco);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -71,10 +67,10 @@ public class EspacoDAO implements crudDAO<Espaco>{
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.merge(espaco);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.merge(espaco);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -87,10 +83,10 @@ public class EspacoDAO implements crudDAO<Espaco>{
     @Override
     public void deleteDados(Espaco espaco) {
         try {
-            Espaco espacoDel = em.getReference(Espaco.class, espaco.getId());
-            tx.begin();
-            em.remove(espacoDel);
-            tx.commit();
+            Espaco espacoDel = connection.em.getReference(Espaco.class, espaco.getId());
+            connection.tx.begin();
+            connection.em.remove(espacoDel);
+            connection.tx.commit();
         } catch (Exception e) {
             System.out.println("------>" + e);
         }

@@ -9,16 +9,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import condominio.poo.JPAUtil;
+import conexaoBancoDeDados.JPAUtil;
 
 public class FuncionarioDAO implements crudDAO<Funcionario>{
-    public EntityManager em = JPAUtil.getEntityManager();
-    public EntityTransaction tx = em.getTransaction();
+    JPAUtil connection = new JPAUtil();
     
     @Override
     public List<Funcionario> findAll() {
         System.out.println("-----------CONSULTA--------------");
-        Query q = (Query) em.createQuery("select a from Funcionario a", Funcionario.class);
+        Query q = connection.em.createQuery("select a from Funcionario a", Funcionario.class);
         @SuppressWarnings("unchecked")
         List<Funcionario> funcionarios = q.getResultList();
 
@@ -29,7 +28,7 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
     public Funcionario findByName(String nome) {
         try {
             String consultaId = "from Funcionario where nome=" + nome;
-            Query q = (Query) em.createQuery(consultaId);
+            Query q = connection.em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
             List<Funcionario> funcionariosId = q.getResultList();
             int index = -1;
@@ -50,7 +49,7 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
     public Funcionario findById(int id) {
         try {
             String consultaId = "from Funcionario where id=" + id;
-            Query q = (Query) em.createQuery(consultaId);
+            Query q = connection.em.createQuery(consultaId);
             @SuppressWarnings("unchecked")
             List<Funcionario> funcionariosId = q.getResultList();
             int index = -1;
@@ -72,10 +71,10 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.persist(func);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.persist(func);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -89,10 +88,10 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
         try {
             System.out.println("======================================");
 
-            tx.begin();
-            em.merge(func);
-            tx.commit();
-            em.close();
+            connection.tx.begin();
+            connection.em.merge(func);
+            connection.tx.commit();
+            connection.em.close();
 
             System.out.println("======================================");
         } catch (Exception error) {
@@ -104,10 +103,10 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
     @Override
     public void deleteDados(Funcionario func) {
         try {
-            Funcionario funcionarioDel = em.getReference(Funcionario.class, func.getId());
-            tx.begin();
-            em.remove(funcionarioDel);
-            tx.commit();
+            Funcionario funcionarioDel = connection.em.getReference(Funcionario.class, func.getId());
+            connection.tx.begin();
+            connection.em.remove(funcionarioDel);
+            connection.tx.commit();
         } catch (Exception e) {
             System.out.println("------>" + e);
         }
