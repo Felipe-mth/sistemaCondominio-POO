@@ -1,6 +1,6 @@
-package processos;
+package Model;
 
-import Model.Transacao;
+import Model.livroDiario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -125,32 +125,4 @@ public class livroRazao{
     public void calcularSaldo(){
         this.saldo = this.montante - this.despesa;
     }
-    
-    /*public double getSaldo(){
-        if(this.saldo> 0){
-            System.out.println("O balanço do mes foi positivo \n");
-        }
-        else if(this.saldo == 0){
-            System.out.println("O balanço do mes foi neutro \n");
-        }
-        else{
-            System.out.println("O balanço do mes foi negativo \n");
-        }
-        
-        return this.saldo;
-    }
-    
-    public void verHistorico() {
-        for (int i = 0; i < livrosDiarios.size(); i++) {
-            livrosDiarios.get(i).getId();
-            livrosDiarios.get(i).getData();
-            livrosDiarios.get(i).listagem();
-        }
-    }
-
-    public void setDespesa() {
-        for (int i = 0; i < livrosDiarios.size(); i++) {
-            this.despesa += livrosDiarios.get(i).verGastos();
-        }
-    }*/
 }

@@ -34,7 +34,7 @@ public class ProdutosDAO implements crudDAO<Produtos>{
             int index = -1;
 
             for(int i = 0; i < produtosId.size(); i++) {
-                if(produtosId.get(i).getNome() == nome) {
+                if(produtosId.get(i).getNome().equals(nome)) {
                     index = i;
                 }
             }

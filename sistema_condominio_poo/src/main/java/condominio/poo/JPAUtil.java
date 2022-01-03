@@ -22,18 +22,6 @@ public class JPAUtil {
         public static void closeEntityManager() {
             emf.close();
         }
-
-        /*//para depois
-        public static void consulta() {
-            System.out.println("-----------CONSULTA--------------");
-            EntityManager em = JPAUtil.getEntityManager();
-            Query q = (Query) em.createQuery("select a from Carro a", Carro.class);
-
-            List<Carro> autos = q.getResultList();
-            for(Carro a : autos) {
-            System.out.println(a.getModelo() +" --- "+a.getPlaca());
-            }
-        }*/
 }
         
 

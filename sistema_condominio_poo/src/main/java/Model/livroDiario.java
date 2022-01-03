@@ -1,7 +1,4 @@
-package processos;
-
-import Model.Produtos;
-import Model.Transacao;
+package Model;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,7 +17,7 @@ public class livroDiario {
     private double valorSaida;
     
     @ManyToOne
-    private livroRazao livroRazao;
+    private Model.livroRazao livroRazao;
 
     @Transient
     SimpleDateFormat formatador = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -94,14 +91,4 @@ public class livroDiario {
     public void livro(livroRazao livro){
         this.livroRazao = livro;
     }
-    
-    /*public void setGastosProdutos() {
-        for (int i = 0; i < produtos.size(); i++) {
-            this.gastoDeProduto = this.gastoDeProduto + produtos.get(i).getPreco();
-        }
-    }
-
-    public void adicionarLista(Object produto) {
-        produtos.add((Produtos) produto);
-    }*/
 }
