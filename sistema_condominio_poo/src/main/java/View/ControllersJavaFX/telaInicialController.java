@@ -26,8 +26,13 @@ public class telaInicialController {
     private Button botaoProduto;
 
     @FXML
-    void selecionaMenuApartamentos(MouseEvent event) {
-
+    void selecionaMenuEspacos(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/JavaFX/Espacos/telaInicialEspacos.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -41,8 +46,13 @@ public class telaInicialController {
     }
 
     @FXML
-    void selecionaMenuProdutos(MouseEvent event) {
-
+    void selecionaMenuProdutos(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/JavaFX/Produtos/telaProdutos.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
