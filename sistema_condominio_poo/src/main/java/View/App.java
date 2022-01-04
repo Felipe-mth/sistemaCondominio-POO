@@ -11,10 +11,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/JavaFX/App.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/JavaFX/telaInicial.fxml"));
         Parent parent = fxmlLoader.load();
-        Scene scene = new Scene(parent, 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(parent);
+        stage.setTitle("Sistema Condomínio - UPE Caruaru");
         stage.setScene(scene);
         stage.show();
     }
