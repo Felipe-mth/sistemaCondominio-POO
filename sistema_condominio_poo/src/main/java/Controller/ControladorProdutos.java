@@ -6,10 +6,10 @@ import Model.Produtos;
 import java.util.List;
 
 public class ControladorProdutos {
-    ProdutosDAO produtos = new ProdutosDAO();
+    static ProdutosDAO produtos = new ProdutosDAO();
 
-    public void cadastrarProdutos(Produtos produtos) {
-        this.produtos.insertDados(produtos);
+    public static void cadastrarProdutos(Produtos prod) {
+        produtos.insertDados(prod);
     }
 
     public void atualizarProdutos(Produtos produtos) {

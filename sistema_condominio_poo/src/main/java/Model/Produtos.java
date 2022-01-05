@@ -20,16 +20,16 @@ public class Produtos {
     private String nome;
     private int quantidade;
 
+    public Produtos() {
+
+    }
+
     public Produtos(Fornecedor fornecedor, int quantidadeMinima, double preco, String nome, int quantidade) {
         this.fornecedor = fornecedor;
         this.quantidadeMinima = quantidadeMinima;
         this.preco = preco;
         this.nome = nome;
         this.quantidade = quantidade;
-    }
-
-    public Produtos() {
-
     }
 
     public void setId(int id) {

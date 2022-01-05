@@ -15,14 +15,14 @@
       <Group layoutX="126.0" layoutY="54.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2f7fc" height="269.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" width="349.0" />
-            <TextField layoutX="13.0" layoutY="49.0" promptText="Nome do produto" />
+            <TextField fx:id="nomeProduto" layoutX="13.0" layoutY="49.0" promptText="Nome do produto" />
             <Label layoutX="13.0" layoutY="32.0" text="Nome:" />
-            <TextField layoutX="189.0" layoutY="49.0" prefHeight="27.0" prefWidth="150.0" promptText="Quantidade do produto" />
+            <TextField fx:id="quantidadeProduto" layoutX="189.0" layoutY="49.0" prefHeight="27.0" prefWidth="150.0" promptText="Quantidade do produto" />
             <Label layoutX="189.0" layoutY="32.0" text="Quantidade:" />
-            <TextField layoutX="189.0" layoutY="112.0" prefHeight="27.0" prefWidth="150.0" promptText="Quantidade mínima do produto" />
+            <TextField fx:id="quantidadeMinimaProduto" layoutX="189.0" layoutY="112.0" prefHeight="27.0" prefWidth="150.0" promptText="Quantidade mínima do produto" />
             <Label layoutX="189.0" layoutY="95.0" text="Quantidade mínima:" />
             <Label layoutX="13.0" layoutY="95.0" text="Preço:" />
-            <TextField layoutX="13.0" layoutY="112.0" promptText="Preço do produto" />
+            <TextField fx:id="precoProduto" layoutX="13.0" layoutY="112.0" promptText="Preço do produto" />
             <ChoiceBox layoutX="13.0" layoutY="161.0" prefWidth="150.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -34,7 +34,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="99.0" layoutY="237.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Adicionar" textFill="WHITE">
+            <Button fx:id="botaoAdicionarProduto" layoutX="99.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#adicionarProduto" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Adicionar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
