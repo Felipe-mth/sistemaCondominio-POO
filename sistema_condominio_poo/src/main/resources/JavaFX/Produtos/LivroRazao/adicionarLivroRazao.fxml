@@ -22,7 +22,7 @@
       <TextField layoutX="132.0" layoutY="198.0" promptText="Montate do mês" />
       <Label layoutX="132.0" layoutY="181.0" text="Montante:" />
       <Label layoutX="305.0" layoutY="127.0" text="Criado Por:" />
-      <Label layoutX="233.0" layoutY="95.0" text="Novo Livro diário">
+      <Label layoutX="233.0" layoutY="95.0" text="Novo Livro Razão">
          <font>
             <Font size="14.0" />
          </font>
