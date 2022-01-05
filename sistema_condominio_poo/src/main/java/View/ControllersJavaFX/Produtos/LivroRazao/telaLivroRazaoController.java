@@ -1,4 +1,4 @@
-package View.ControllersJavaFX.Produtos.Almoxarifado;
+package View.ControllersJavaFX.Produtos.LivroRazao;
 
 import View.ControllersJavaFX.SceneController;
 import javafx.fxml.FXML;
@@ -7,54 +7,54 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-public class AlmoxarifadoController {
+public class telaLivroRazaoController {
 
     @FXML
-    private Button botaoAdicionarFuncionario;
+    private Button botaoAdicionarProduto;
 
     @FXML
     private Button botaoLivroDiario;
 
     @FXML
-    private Button botaoLivroRazao;
-
-    @FXML
-    private Button botaoProduto;
+    private Button botaoNovoLivro;
 
     @FXML
     private Button botaoVoltar;
 
     @FXML
-    void adicionarFuncionarioTela(MouseEvent event) throws IOException {
+    void adicionarLivroRazao(MouseEvent event) throws IOException {
         SceneController controladorCena = new SceneController();
-        String caminho = "/JavaFX/Produtos/Almoxarifado/adicionarFuncionario.fxml";
+        String caminho = "/JavaFX/Produtos/LivroRazao/adicionarLivroRazao.fxml";
 
         controladorCena.voltarParaPaginaAnterior(event, caminho);
     }
 
     @FXML
-    void telaLivroDiario(MouseEvent event) {
-
-    }
-
-    @FXML
-    void telaLivroRazao(MouseEvent event) throws IOException {
+    void telaAdicionarProduto(MouseEvent event) throws IOException {
         SceneController controladorCena = new SceneController();
-        String caminho = "/JavaFX/Produtos/LivroRazao/telaLivroRazao.fxml";
+        String caminho = "/JavaFX/Produtos/adicionarProduto.fxml";
 
         controladorCena.voltarParaPaginaAnterior(event, caminho);
     }
 
     @FXML
-    void voltaParaProduto(MouseEvent event) throws IOException {
+    void voltaAlmoxarifado(MouseEvent event) throws IOException {
         SceneController controladorCena = new SceneController();
-        String caminho = "/JavaFX/Produtos/telaProdutos.fxml";
+        String caminho = "/JavaFX/Produtos/Almoxarifado/Almoxarifado.fxml";
 
         controladorCena.voltarParaPaginaAnterior(event, caminho);
     }
 
     @FXML
-    void voltarParaTelaAnterior(MouseEvent event) throws IOException {
+    void voltaLivroDiario(MouseEvent event) throws IOException {
+        SceneController controladorCena = new SceneController();
+        String caminho = "/JavaFX/Produtos/LivroDiario/LivroDiario.fxml";
+
+        controladorCena.voltarParaPaginaAnterior(event, caminho);
+    }
+
+    @FXML
+    void voltarTelaAnterior(MouseEvent event) throws IOException {
         SceneController controladorCena = new SceneController();
         String caminho = "/JavaFX/Produtos/telaProdutos.fxml";
 

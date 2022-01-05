@@ -47,17 +47,17 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="3.0" layoutY="74.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: #1e90ff;" text="Produtos" textFill="WHITE">
+                  <Button fx:id="botaoProduto" layoutX="3.0" layoutY="74.0" mnemonicParsing="false" onMouseClicked="#voltaParaProduto" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: #1e90ff;" text="Produtos" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="3.0" layoutY="114.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: #1e90ff;" text="Livro Diário" textFill="WHITE">
+                  <Button fx:id="botaoLivroDiario" layoutX="3.0" layoutY="114.0" mnemonicParsing="false" onMouseClicked="#telaLivroDiario" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: #1e90ff;" text="Livro Diário" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="3.0" layoutY="153.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: #1e90ff;" text="Livro Razão" textFill="WHITE">
+                  <Button fx:id="botaoLivroRazao" layoutX="3.0" layoutY="153.0" mnemonicParsing="false" onMouseClicked="#telaLivroRazao" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: #1e90ff;" text="Livro Razão" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
