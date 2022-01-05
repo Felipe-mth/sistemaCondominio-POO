@@ -16,6 +16,9 @@ public class telaInicialProdutosController {
     private Button botaoTelaInicial;
 
     @FXML
+    private Button botaoAlmoxarifado;
+
+    @FXML
     void adicionarProduto(MouseEvent event) throws IOException {
         SceneController controladorCena = new SceneController();
         String caminho = "/JavaFX/Produtos/adicionarProduto.fxml";
@@ -23,6 +26,13 @@ public class telaInicialProdutosController {
         controladorCena.voltarParaPaginaAnterior(event, caminho);
     }
 
+    @FXML
+    void entraEmAlmoxarifado(MouseEvent event) throws IOException {
+        SceneController controladorCena = new SceneController();
+        String caminho = "/JavaFX/Produtos/Almoxarifado/Almoxarifado.fxml";
+
+        controladorCena.voltarParaPaginaAnterior(event, caminho);
+    }
 
     @FXML
     void voltarTelaInicial(MouseEvent event) throws IOException {
