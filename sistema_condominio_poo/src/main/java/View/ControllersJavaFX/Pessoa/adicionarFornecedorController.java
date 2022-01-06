@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 
 public class adicionarFornecedorController  {
 
-      @FXML
+    @FXML
     private TextField Endereco;
 
     @FXML

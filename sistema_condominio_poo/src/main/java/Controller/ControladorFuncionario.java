@@ -7,10 +7,10 @@ import java.util.List;
 import Model.Endereco;
 
 public class ControladorFuncionario {
-    FuncionarioDAO funcio = new FuncionarioDAO();
+    static FuncionarioDAO funcio = new FuncionarioDAO();
 
-    public void cadastrarFuncionario(String cpf, Endereco endereco, String cargo, double salario, String turno, String telefone, String nome) {
-        this.funcio.insertDados(cpf, endereco, cargo, salario, turno, telefone, nome);
+    public static void cadastrarFuncionario(String cpf, Endereco endereco, String cargo, double salario, String turno, String telefone, String nome) {
+        funcio.insertDados(cpf, endereco, cargo, salario, turno, telefone, nome);
     }
 
     public void atualizarFuncionario(Funcionario funcionario) {
