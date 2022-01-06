@@ -50,21 +50,21 @@ public class telaInicialEspacosController {
 
     @FXML
     void selecionaAdicionarEspaco(MouseEvent event) throws IOException {
-         SceneController controladorCena = new SceneController();
+        SceneController controladorCena = new SceneController();
         switch(this.opcao){
             case 1: 
                 
-                String caminho = "/JavaFX/Pessoas/adicionarApartamentos.fxml";
+                String caminho = "/JavaFX/Espacos/adicionarApartamentos.fxml";
                 controladorCena.voltarParaPaginaAnterior(event, caminho);
                 break;
             case 2: 
                 
-                 caminho = "/JavaFX/Pessoas/adicionarCarro.fxml";
+                 caminho = "/JavaFX/Espacos/adicionarCarro.fxml";
                 controladorCena.voltarParaPaginaAnterior(event, caminho);
                 break;
             case 3:
          
-                 caminho = "/JavaFX/Pessoas/adicionarEspaco.fxml";
+                 caminho = "/JavaFX/Espacos/adicionarEspaco.fxml";
                 controladorCena.voltarParaPaginaAnterior(event, caminho);
                 break;
         }
@@ -76,17 +76,17 @@ public class telaInicialEspacosController {
         switch(this.opcao){
             case 1: 
                 
-                String caminho = "/JavaFX/Pessoas/adicionarApartamentos.fxml";
+                String caminho = "/JavaFX/Espacos/adicionarApartamentos.fxml";
                 controladorCena.voltarParaPaginaAnterior(event, caminho);
                 break;
             case 2: 
                 
-                 caminho = "/JavaFX/Pessoas/adicionarCarro.fxml";
+                 caminho = "/JavaFX/Espacos/adicionarCarro.fxml";
                 controladorCena.voltarParaPaginaAnterior(event, caminho);
                 break;
             case 3:
          
-                 caminho = "/JavaFX/Pessoas/adicionarEspaco.fxml";
+                 caminho = "/JavaFX/Espacos/adicionarEspaco.fxml";
                 controladorCena.voltarParaPaginaAnterior(event, caminho);
                 break;
         }

@@ -75,7 +75,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="botaoFuncionario" layoutX="-2.0" layoutY="226.0" mnemonicParsing="false" onMouseClicked="#listarFuncionarios" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Funconário" textFill="WHITE">
+            <Button fx:id="botaoFuncionario" layoutX="-2.0" layoutY="226.0" mnemonicParsing="false" onMouseClicked="#listarFuncionarios" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Funcionário" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
