@@ -7,10 +7,10 @@ import Model.TransacaoMoradores;
 import java.util.List;
 
 public class ControladorTransacaoMorador {
-    TransacaoMoradorDAO transacaoMorador = new TransacaoMoradorDAO();
+    static TransacaoMoradorDAO transacaoMorador = new TransacaoMoradorDAO();
 
-    public void cadastrarTransacaoMoradores(double valor, String descricao, Morador morador) {
-        this.transacaoMorador.insertDados(valor, descricao, morador);
+    public static void cadastrarTransacaoMoradores(double valor, String descricao, Morador morador) {
+        transacaoMorador.insertDados(valor, descricao, morador);
     }
 
     public void atualizarTransacaoMoradores(TransacaoMoradores transacaoMorador) {

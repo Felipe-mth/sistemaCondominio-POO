@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorTransacaoProduto {
-    TransacaoProdutoDAO transacaoProdutos = new TransacaoProdutoDAO();
+    static TransacaoProdutoDAO transacaoProdutos = new TransacaoProdutoDAO();
 
-    public void cadastrarTransacaoProduto(double valor, String descricao, ArrayList<Produtos> produtos) {
-        this.transacaoProdutos.insertDados(valor, descricao, produtos);
+    public static void cadastrarTransacaoProduto(double valor, String descricao, ArrayList<Produtos> produtos) {
+        transacaoProdutos.insertDados(valor, descricao, produtos);
     }
 
     public void atualizarTransacaoProduto(TransacaoProduto transacaoProdutos) {

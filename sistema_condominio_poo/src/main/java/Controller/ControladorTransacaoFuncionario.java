@@ -7,10 +7,10 @@ import Model.TransacaoFuncionario;
 import java.util.List;
 
 public class ControladorTransacaoFuncionario {
-    TransacaoFuncionarioDAO transacaoFuncionario = new TransacaoFuncionarioDAO();
+    static TransacaoFuncionarioDAO transacaoFuncionario = new TransacaoFuncionarioDAO();
 
-    public void cadastrarTransacaoFuncionario(double valor, String descricao, Funcionario funcionario) {
-        this.transacaoFuncionario.insertDados(valor, descricao, funcionario);
+    public static void cadastrarTransacaoFuncionario(double valor, String descricao, Funcionario funcionario) {
+        transacaoFuncionario.insertDados(valor, descricao, funcionario);
     }
 
     public void atualizarTransacaoFuncionario(TransacaoFuncionario transacaoFuncionario) {
