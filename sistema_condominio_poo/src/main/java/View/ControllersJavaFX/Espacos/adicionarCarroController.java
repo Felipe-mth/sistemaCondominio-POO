@@ -4,10 +4,21 @@ import View.ControllersJavaFX.SceneController;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class adicionarCarroController {
 
+     @FXML
+    private ChoiceBox<?> Dono;
+
+    @FXML
+    private TextField Modelo;
+
+    @FXML
+    private TextField Placa;
+    
     @FXML
     private Button adicionarBotao;
 

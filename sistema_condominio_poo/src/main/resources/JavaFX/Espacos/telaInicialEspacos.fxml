@@ -21,7 +21,7 @@
                </font>
             </Label>
             <Separator layoutX="-49.0" layoutY="36.0" prefHeight="1.0" prefWidth="199.0" />
-            <Button layoutX="-1.0" layoutY="109.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Editar" textFill="WHITE">
+            <Button fx:id="botaoEditar" layoutX="-1.0" layoutY="109.0" mnemonicParsing="false" onMouseClicked="#selecionaEditarEspaco" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Editar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -29,7 +29,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="-1.0" layoutY="69.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Adicionar" textFill="WHITE">
+            <Button fx:id="botaoEspaco" layoutX="-1.0" layoutY="362.0" mnemonicParsing="false" onMouseClicked="#listarEspaco" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Espaço" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -37,7 +37,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="-1.0" layoutY="362.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Espaço" textFill="WHITE">
+            <Button fx:id="botaoAdicionar" layoutX="-1.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#selecionaAdicionarEspaco" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Adicionar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -45,7 +45,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="-1.0" layoutY="322.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Carro" textFill="WHITE">
+            <Button fx:id="botaoCarro" layoutX="-1.0" layoutY="322.0" mnemonicParsing="false" onDragDropped="#listarCarro" onMouseClicked="#listarCarro" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Carro" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -59,7 +59,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Button layoutX="-2.0" layoutY="149.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Remover" textFill="WHITE">
+            <Button fx:id="botaoRemover" layoutX="-2.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#selecionaRemoverEspaco" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Remover" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -67,7 +67,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutY="282.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Apartamentos" textFill="WHITE">
+            <Button fx:id="botaoApartamentos" layoutY="282.0" mnemonicParsing="false" onMouseClicked="#listarApartamento" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Apartamentos" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -81,13 +81,21 @@
    <right>
       <AnchorPane prefHeight="400.0" prefWidth="529.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="35.0" layoutY="67.0" stroke="BLACK" strokeType="INSIDE" width="376.0" />
-            <ListView layoutX="24.0" layoutY="92.0" prefHeight="278.0" prefWidth="401.0" style="-fx-background-color: #f2f7fc; -fx-background-radius: 20; -fx-border-color: Black; -fx-border-radius: 20;" />
-            <Label layoutX="165.0" layoutY="72.0" textFill="WHITE">
+            <Label layoutX="165.0" layoutY="72.0" prefHeight="20.0" prefWidth="106.0" text="Espaço" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="35.0" layoutY="67.0" stroke="BLACK" strokeType="INSIDE" width="376.0" />
+            <ListView layoutX="24.0" layoutY="92.0" prefHeight="278.0" prefWidth="401.0" style="-fx-background-color: #f2f7fc; -fx-background-radius: 20; -fx-border-color: Black; -fx-border-radius: 20;" />
+            <Button fx:id="botaoTelaInicial" layoutX="284.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#voltarTelaInicial" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Voltar Tela Inicial" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
    </right>

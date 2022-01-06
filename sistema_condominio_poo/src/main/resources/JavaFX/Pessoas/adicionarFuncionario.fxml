@@ -15,12 +15,12 @@
       <Group layoutX="126.0" layoutY="77.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2f7fc" height="277.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" width="349.0" />
-            <TextField layoutX="13.0" layoutY="49.0" promptText="EX: 13214569800" />
+            <TextField fx:id="NCPF" layoutX="13.0" layoutY="49.0" promptText="EX: 13214569800" />
             <Label layoutX="13.0" layoutY="32.0" text="Número do CPF ou CNPJ:" />
-            <TextField layoutX="189.0" layoutY="49.0" promptText="EX: Avenida Pontes, 405" />
+            <TextField fx:id="Endereco" layoutX="189.0" layoutY="49.0" promptText="EX: Avenida Pontes, 405" />
             <Label layoutX="189.0" layoutY="32.0" text="Endereço:" />
-            <Label layoutX="13.0" layoutY="95.0" text="Telefone:" />
-            <TextField layoutX="13.0" layoutY="112.0" promptText="EX: 87999654789" />
+            <Label layoutX="13.0" layoutY="90.0" text="Telefone:" />
+            <TextField fx:id="Telefone" layoutX="13.0" layoutY="107.0" promptText="EX: 87999654789" />
             <Label layoutX="93.0" layoutY="2.0" text="Cadastro de Funcionário">
                <font>
                   <Font size="14.0" />
@@ -35,13 +35,13 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TextField layoutX="189.0" layoutY="107.0" promptText="EX: Josival Bezerra" />
-            <Label layoutX="13.0" layoutY="147.0" text="Cargo:" />
-            <TextField layoutX="13.0" layoutY="164.0" promptText="EX: Gerente, Segurança" />
+            <TextField fx:id="Nome" layoutX="189.0" layoutY="107.0" promptText="EX: Josival Bezerra" />
+            <Label layoutX="13.0" layoutY="142.0" text="Cargo:" />
+            <TextField fx:id="Cargo" layoutX="13.0" layoutY="159.0" promptText="EX: Gerente, Segurança" />
             <Label layoutX="189.0" layoutY="142.0" text="Turno:" />
-            <TextField layoutX="189.0" layoutY="159.0" promptText="EX: Manhã, Tarde, Noite" />
-            <Label layoutX="13.0" layoutY="201.0" text="Salário:" />
-            <TextField layoutX="13.0" layoutY="218.0" promptText="EX: 1500" />
+            <TextField fx:id="Turno" layoutX="189.0" layoutY="159.0" promptText="EX: Manhã, Tarde, Noite" />
+            <Label layoutX="13.0" layoutY="196.0" text="Salário:" />
+            <TextField fx:id="Salario" layoutX="13.0" layoutY="213.0" promptText="EX: 1500" />
             <Button fx:id="botaoCancelar" layoutX="11.0" layoutY="254.0" mnemonicParsing="false" onMouseClicked="#voltarTelaPessoas" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #c33434;" text="Cancelar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />

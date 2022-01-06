@@ -4,9 +4,17 @@ import View.ControllersJavaFX.SceneController;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.input.MouseEvent;
 
 public class adicionarEspacoController {
+
+    @FXML
+    private DatePicker Data;
+
+    @FXML
+    private ChoiceBox<?> Morador;
 
     @FXML
     private Button botaoAdicionar;

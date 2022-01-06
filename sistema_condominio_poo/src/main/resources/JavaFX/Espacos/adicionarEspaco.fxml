@@ -18,12 +18,12 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2f7fc" height="127.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" width="349.0" />
             <Label layoutX="178.0" layoutY="32.0" text="Data:" />
             <Label layoutX="14.0" layoutY="32.0" text="Morador:" />
-            <Label layoutX="119.0" layoutY="1.0" text="Cadastro de Carro">
+            <Label layoutX="119.0" layoutY="1.0" text="Cadastro de Espaco">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="14.0" layoutY="49.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="Morador" layoutX="14.0" layoutY="49.0" prefWidth="150.0" />
             <Button fx:id="botaoAdicionar" layoutX="181.0" layoutY="95.0" mnemonicParsing="false" onMouseClicked="#cadastrarEspaco" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #1e90ff;" text="Adicionar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -32,7 +32,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <DatePicker layoutX="178.0" layoutY="49.0" prefHeight="25.0" prefWidth="157.0" promptText="Data da reserva" />
+            <DatePicker fx:id="Data" layoutX="178.0" layoutY="49.0" prefHeight="25.0" prefWidth="157.0" promptText="Data da reserva" />
             <Button fx:id="botaoCancelar" layoutX="14.0" layoutY="95.0" mnemonicParsing="false" onMouseClicked="#voltarTelaPessoas" prefHeight="28.0" prefWidth="151.0" style="-fx-background-color: #c33434;" text="Cancelar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
