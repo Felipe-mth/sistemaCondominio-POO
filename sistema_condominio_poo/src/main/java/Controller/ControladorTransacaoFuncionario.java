@@ -1,6 +1,7 @@
 package Controller;
 
 import DAO.DaoClasse.TransacaoFuncionarioDAO;
+import Model.Funcionario;
 import Model.TransacaoFuncionario;
 
 import java.util.List;
@@ -8,8 +9,8 @@ import java.util.List;
 public class ControladorTransacaoFuncionario {
     TransacaoFuncionarioDAO transacaoFuncionario = new TransacaoFuncionarioDAO();
 
-    public void cadastrarTransacaoFuncionario(TransacaoFuncionario transacaoFuncionario) {
-        this.transacaoFuncionario.insertDados(transacaoFuncionario);
+    public void cadastrarTransacaoFuncionario(double valor, String descricao, Funcionario funcionario) {
+        this.transacaoFuncionario.insertDados(valor, descricao, funcionario);
     }
 
     public void atualizarTransacaoFuncionario(TransacaoFuncionario transacaoFuncionario) {

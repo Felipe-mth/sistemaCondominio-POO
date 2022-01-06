@@ -1,15 +1,15 @@
 package DAO.DaoClasse;
 
 import DAO.interfaces.crudDAO;
+import Model.Funcionario;
 import Model.TransacaoFuncionario;
 import conexaoBancoDeDados.JPAUtil;
 import javax.persistence.Query;
 import java.util.List;
 
-public class TransacaoFuncionarioDAO implements crudDAO<TransacaoFuncionario> {
+public class TransacaoFuncionarioDAO {
     JPAUtil connection = new JPAUtil();
 
-    @Override
     public List<TransacaoFuncionario> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = connection.em.createQuery("select a from TransacaoFuncionario a", TransacaoFuncionario.class);
@@ -19,7 +19,6 @@ public class TransacaoFuncionarioDAO implements crudDAO<TransacaoFuncionario> {
         return transacaoFuncionarios;
     }
 
-    @Override
     public TransacaoFuncionario findByName(String nome) {
         return null;
     }
@@ -44,11 +43,10 @@ public class TransacaoFuncionarioDAO implements crudDAO<TransacaoFuncionario> {
         }
     }
 
-    @Override
-    public void insertDados(TransacaoFuncionario transacaoFuncionario) {
+    public void insertDados(double valor, String descricao, Funcionario funcionario) {
         try {
             System.out.println("======================================");
-
+            TransacaoFuncionario transacaoFuncionario = new TransacaoFuncionario(valor, descricao, funcionario);
             connection.tx.begin();
             connection.em.persist(transacaoFuncionario);
             connection.tx.commit();
@@ -61,7 +59,6 @@ public class TransacaoFuncionarioDAO implements crudDAO<TransacaoFuncionario> {
         }
     }
 
-    @Override
     public void updateDados(TransacaoFuncionario transacaoFuncionario) {
         try {
             System.out.println("======================================");
@@ -78,7 +75,6 @@ public class TransacaoFuncionarioDAO implements crudDAO<TransacaoFuncionario> {
         }
     }
 
-    @Override
     public void deleteDados(TransacaoFuncionario transacaoFuncionario) {
         try {
             TransacaoFuncionario transacaoFuncionarioDel = connection.em.getReference(TransacaoFuncionario.class, transacaoFuncionario.getId());

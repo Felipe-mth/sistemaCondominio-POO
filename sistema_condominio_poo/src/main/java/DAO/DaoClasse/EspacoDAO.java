@@ -1,16 +1,17 @@
 package DAO.DaoClasse;
+import java.util.Date;
 import java.util.List;
 
 import DAO.interfaces.crudDAO;
 import Model.Espaco;
 import javax.persistence.Query;
 
+import Model.Morador;
 import conexaoBancoDeDados.JPAUtil;
 
-public class EspacoDAO implements crudDAO<Espaco>{
+public class EspacoDAO {
     JPAUtil connection = new JPAUtil();
 
-    @Override
     public List<Espaco> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = connection.em.createQuery("select a from Espaco a", Espaco.class);
@@ -20,7 +21,6 @@ public class EspacoDAO implements crudDAO<Espaco>{
         return listaDeEspacos;
     }
 
-    @Override
     public Espaco findByName(String nome) {
         return null;
     }
@@ -45,11 +45,10 @@ public class EspacoDAO implements crudDAO<Espaco>{
         }
     }
 
-    @Override
-    public void insertDados(Espaco espaco) {
+    public void insertDados(Date data, Morador morador) {
         try {
             System.out.println("======================================");
-
+            Espaco espaco = new Espaco();
             connection.tx.begin();
             connection.em.persist(espaco);
             connection.tx.commit();
@@ -62,7 +61,6 @@ public class EspacoDAO implements crudDAO<Espaco>{
         } 
     }
 
-    @Override
     public void updateDados(Espaco espaco) {
         try {
             System.out.println("======================================");
@@ -80,7 +78,6 @@ public class EspacoDAO implements crudDAO<Espaco>{
         
     }
 
-    @Override
     public void deleteDados(Espaco espaco) {
         try {
             Espaco espacoDel = connection.em.getReference(Espaco.class, espaco.getId());
