@@ -120,7 +120,11 @@ public class livroRazao{
     public double getMontante(){
         return this.montante;
     }
-    public void calcularSaldo(){
-        this.saldo = this.montante - this.despesa;
+
+    public double getSaldo() {
+        return saldo;
     }
+    /*public void calcularSaldo(){
+        this.saldo = this.montante - this.despesa;
+    }*/
 }

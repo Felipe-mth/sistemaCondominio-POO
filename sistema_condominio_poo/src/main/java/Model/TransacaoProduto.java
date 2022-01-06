@@ -2,15 +2,17 @@ package Model;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import java.util.ArrayList;
+import java.util.*;
 
 @Entity
+@PrimaryKeyJoinColumn(name="Id")
 @Table(name = "TransacaoProduto")
 public class TransacaoProduto extends Transacao{
 
     @ManyToMany
-    ArrayList<Produtos> produtos = new ArrayList<>();
+    List<Produtos> produtos = new ArrayList<>();
 
     public TransacaoProduto() {
         super();
@@ -21,11 +23,11 @@ public class TransacaoProduto extends Transacao{
         this.produtos = produtos;
     }
 
-    public ArrayList<Produtos> getProdutos() {
+    public List<Produtos> getProdutos() {
         return produtos;
     }
 
-    public void setProdutos(ArrayList<Produtos> produtos) {
+    public void setProdutos(List<Produtos> produtos) {
         this.produtos = produtos;
     }
 }

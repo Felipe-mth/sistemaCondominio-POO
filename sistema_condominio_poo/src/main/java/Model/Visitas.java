@@ -15,8 +15,12 @@ public class Visitas extends Pessoa {
     @OneToOne
     private Morador moradorVisitado;
     
-    public Visitas(String cpfCNPJ, String telefone, String nome, Endereco endereco) {
+    public Visitas(String cpfCNPJ, String telefone, String nome, Endereco endereco, int horarioVisita, int periodoVisita, int dataVisita, Morador moradorVisitado) {
         super(cpfCNPJ, telefone, nome, endereco);
+        this.horarioVisita = horarioVisita;
+        this.periodoVisita = periodoVisita;
+        this.dataVisita = dataVisita;
+        this.moradorVisitado = moradorVisitado;
     }
 
     public Visitas() {

@@ -18,6 +18,10 @@ public class Morador extends Pessoa {
         this.apartamento = apartamento;
     }
 
+    public Morador() {
+
+    }
+
     public Apartamentos getApartamento() {
         return apartamento;
     }

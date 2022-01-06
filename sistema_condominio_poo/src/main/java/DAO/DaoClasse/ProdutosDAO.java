@@ -77,7 +77,7 @@ public class ProdutosDAO implements crudDAO<Produtos>{
         } catch (Exception error) {
             System.out.println("=====================================\n" +
                     "Deu errado --> " + error);
-        }  
+        }
     }
 
     @Override
@@ -94,7 +94,7 @@ public class ProdutosDAO implements crudDAO<Produtos>{
         } catch (Exception error) {
             System.out.println("=====================================\n" +
                     "Deu errado --> " + error);
-        } 
+        }
     }
 
     @Override

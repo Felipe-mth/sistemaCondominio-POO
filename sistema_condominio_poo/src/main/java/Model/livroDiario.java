@@ -3,6 +3,7 @@ package Model;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -23,21 +24,22 @@ public class livroDiario {
     SimpleDateFormat formatador = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     @OneToMany
-    ArrayList<Transacao> transacoesEntrada = new ArrayList<>();  //aqui so tava faltando o <>, no new arraylist.
+    @JoinColumn(name = "transacoesEntrada")
+    List<Transacao> transacoesEntrada = new ArrayList<>();  //aqui so tava faltando o <>, no new arraylist.
 
     @OneToMany
-    ArrayList<Transacao> transacoesSaida = new ArrayList<>();
+    @JoinColumn(name = "transacoesSaida")
+    List<Transacao> transacoesSaida = new ArrayList<>();
+
+    public livroDiario(){
+        this.data = formatador.format(date);
+    }
 
     public SimpleDateFormat getFormatador() {
         return formatador;
     }
 
-    public livroDiario(){}
-   
-    public livroDiario(int Id){
-      this.Id = Id;
-      this.data = formatador.format(date);
-    }
+
     public void setId(int id) {
         this.Id = id;
     }
@@ -53,7 +55,7 @@ public class livroDiario {
         this.data = formatador.format(date);
     }
 
-    public ArrayList<Transacao> getTransacoesEntrada() {
+    public List<Transacao> getTransacoesEntrada() {
         return transacoesEntrada;
     }
 
@@ -70,7 +72,7 @@ public class livroDiario {
         return valorSaida;
     }
 
-    public ArrayList<Transacao> getTransacoesSaida() {
+    public List<Transacao> getTransacoesSaida() {
         return transacoesSaida;
     }
 

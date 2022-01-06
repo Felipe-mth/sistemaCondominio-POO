@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.List;
 //import java.util.Scanner;
 import javax.persistence.*;
 
@@ -14,10 +15,9 @@ public class Almoxarifado {
     private String telefone;
     private String email;
     @ManyToMany
-    private ArrayList<Produtos> produtos;
+    private List<Produtos> produtos = new ArrayList<>();
 
-    public Almoxarifado(int id, Funcionario funcionario, String telefone, String email) {
-        this.Id = id;
+    public Almoxarifado(Funcionario funcionario, String telefone, String email) {
         this.funcionario = funcionario;
         this.telefone = telefone;
         this.email = email;
@@ -58,11 +58,11 @@ public class Almoxarifado {
         this.telefone = telefone;
     }
 
-    public ArrayList<Produtos> getProdutos() {
+    public List<Produtos> getProdutos() {
         return this.produtos;
     }
 
-    public void setProdutos(ArrayList<Produtos> produtos) {
+    public void setProdutos(List<Produtos> produtos) {
         this.produtos = produtos;
     }
 }

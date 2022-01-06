@@ -8,16 +8,15 @@ import java.util.Date;
 @Entity
 @Table(name = "Espaco")
 public class Espaco {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @OneToOne
     private Morador morador;
     @Temporal(TemporalType.TIMESTAMP)
     private Date data;
 
-    public Espaco(Date data, int id, Morador morador) {
+    public Espaco(Date data, Morador morador) {
         this.data = data;
-        this.id = id;
         this.morador = morador;
     }
 
