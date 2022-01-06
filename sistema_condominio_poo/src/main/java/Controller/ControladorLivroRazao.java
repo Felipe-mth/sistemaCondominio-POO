@@ -6,10 +6,10 @@ import Model.livroRazao;
 import java.util.List;
 
 public class ControladorLivroRazao {
-    livroRazaoDAO livroRazao = new livroRazaoDAO();
+    static livroRazaoDAO livroRazao = new livroRazaoDAO();
 
-    public void cadastrarLivroRazao(int mes,String criadoPor, double montante) {
-        this.livroRazao.insertDados(mes, criadoPor, montante);
+    public static void cadastrarLivroRazao(int mes,String criadoPor, double montante) {
+        livroRazao.insertDados(mes, criadoPor, montante);
     }
 
 

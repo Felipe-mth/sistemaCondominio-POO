@@ -7,21 +7,18 @@ import conexaoBancoDeDados.JPAUtil;
 import javax.persistence.Query;
 import java.util.List;
 
-public class livroRazaoDAO implements crudDAO<livroRazao>{
+public class livroRazaoDAO {
     JPAUtil connection = new JPAUtil();
 
-    @Override
     public List<livroRazao> findAll() {
         return null;
     }
 
-    @Override
     public livroRazao findByName(String nome) {
         return null;
     }
 
-    @Override
-    public void insertDados(int mes,String criadoPor, double montante) {
+    public void insertDados(int mes, String criadoPor, double montante) {
         try {
             System.out.println("======================================");
             livroRazao livroRazao = new livroRazao(mes, criadoPor, montante);
@@ -37,7 +34,6 @@ public class livroRazaoDAO implements crudDAO<livroRazao>{
         }
     }
 
-    @Override
     public void updateDados(livroRazao livroRazao) {
         try {
             System.out.println("======================================");
@@ -54,7 +50,6 @@ public class livroRazaoDAO implements crudDAO<livroRazao>{
         }
     }
 
-    @Override
     public void deleteDados(livroRazao livroRazao) {
         try {
             livroRazao livroRazaoDel = connection.em.getReference(livroRazao.class, livroRazao.getId());

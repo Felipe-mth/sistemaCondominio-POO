@@ -8,7 +8,7 @@ import conexaoBancoDeDados.JPAUtil;
 import DAO.interfaces.*;
 import Model.*;
 
-public class CarroDAO implements crudDAO<Carro> {
+public class CarroDAO {
     JPAUtil connection = new JPAUtil();
 
     public List<Carro> findAll() {
