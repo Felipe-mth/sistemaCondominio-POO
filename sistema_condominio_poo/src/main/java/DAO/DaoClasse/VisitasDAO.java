@@ -3,15 +3,16 @@ package DAO.DaoClasse;
 import java.util.List;
 
 import DAO.interfaces.crudDAO;
+import Model.Endereco;
+import Model.Morador;
 import Model.Visitas;
 import javax.persistence.Query;
 
 import conexaoBancoDeDados.JPAUtil;
 
-public class VisitasDAO implements crudDAO<Visitas>{
+public class VisitasDAO {
     JPAUtil connection = new JPAUtil();
 
-    @Override
     public List<Visitas> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = connection.em.createQuery("select a from Produtos a", Visitas.class);
@@ -21,7 +22,6 @@ public class VisitasDAO implements crudDAO<Visitas>{
         return visitantes;
     }
 
-    @Override
     public Visitas findByName(String nome) {
         try {
             String consultaId = "from Visitas where nome=" + nome;
@@ -63,13 +63,12 @@ public class VisitasDAO implements crudDAO<Visitas>{
         }
     }
 
-    @Override
-    public void insertDados(Visitas visitas) {
+    public void insertDados(String cpfCNPJ, String telefone, String nome, Endereco endereco, int horarioVisita, int periodoVisita, int dataVisita, Morador moradorVisitado) {
         try {
             System.out.println("======================================");
-
+            Visitas visita = new Visitas(cpfCNPJ, telefone, nome, endereco, horarioVisita, periodoVisita, dataVisita, moradorVisitado);
             connection.tx.begin();
-            connection.em.persist(visitas);
+            connection.em.persist(visita);
             connection.tx.commit();
             connection.em.close();
 
@@ -80,7 +79,6 @@ public class VisitasDAO implements crudDAO<Visitas>{
         } 
     }
 
-    @Override
     public void updateDados(Visitas visitas) {
         try {
             System.out.println("======================================");
@@ -98,7 +96,6 @@ public class VisitasDAO implements crudDAO<Visitas>{
         
     }
 
-    @Override
     public void deleteDados(Visitas visitas) {
         try {
             Visitas visitasDel = connection.em.getReference(Visitas.class, visitas.getId());
