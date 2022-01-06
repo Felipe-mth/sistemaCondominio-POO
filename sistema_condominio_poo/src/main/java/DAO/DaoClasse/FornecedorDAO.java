@@ -8,10 +8,12 @@ import javax.persistence.Query;
 
 import conexaoBancoDeDados.JPAUtil;
 
-public class FornecedorDAO implements crudDAO<Fornecedor>{
+import Model.Endereco;
+
+public class FornecedorDAO{
     JPAUtil connection = new JPAUtil();
 
-    @Override
+    
     public List<Fornecedor> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = connection.em.createQuery("select a from Fornecedor a", Fornecedor.class);
@@ -21,7 +23,7 @@ public class FornecedorDAO implements crudDAO<Fornecedor>{
         return fornecedores;
     }
 
-    @Override
+    
     public Fornecedor findByName(String nome) {
         try {
             String consultaId = "from Fornecedor where nome=" + nome;
@@ -63,11 +65,11 @@ public class FornecedorDAO implements crudDAO<Fornecedor>{
         }
     }
 
-    @Override
-    public void insertDados(Fornecedor fornecedor) {
+    
+    public void insertDados(String cpfCNPJ, String telefone, String nome, Endereco endereco) {
         try {
             System.out.println("======================================");
-
+            Fornecedor fornecedor = new Fornecedor(cpfCNPJ, telefone, nome, endereco);
             connection.tx.begin();
             connection.em.persist(fornecedor);
             connection.tx.commit();
@@ -80,7 +82,7 @@ public class FornecedorDAO implements crudDAO<Fornecedor>{
         }
     }
 
-    @Override
+   
     public void updateDados(Fornecedor fornecedor) {
         try {
             System.out.println("======================================");
@@ -97,7 +99,7 @@ public class FornecedorDAO implements crudDAO<Fornecedor>{
         }
     }
 
-    @Override
+    
     public void deleteDados(Fornecedor fornecedor) {
         try {
             Fornecedor fornecedorDel = connection.em.getReference(Fornecedor.class, fornecedor.getId());
