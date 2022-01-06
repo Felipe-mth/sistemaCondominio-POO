@@ -1,15 +1,17 @@
 package Controller;
 
 import DAO.DaoClasse.ProdutosDAO;
+import Model.Fornecedor;
 import Model.Produtos;
+import net.bytebuddy.implementation.bind.annotation.Super;
 
 import java.util.List;
 
 public class ControladorProdutos {
     static ProdutosDAO produtos = new ProdutosDAO();
 
-    public static void cadastrarProdutos(Produtos prod) {
-        produtos.insertDados(prod);
+    public static void cadastrarProdutos(Fornecedor fornecedor, int quantidadeMinima, double preco, String nome, int quantidade) {
+        produtos.insertDados(fornecedor, quantidadeMinima, preco, nome, quantidade);
     }
 
     public void atualizarProdutos(Produtos produtos) {

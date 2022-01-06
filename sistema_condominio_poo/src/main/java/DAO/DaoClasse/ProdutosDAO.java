@@ -3,15 +3,15 @@ package DAO.DaoClasse;
 import java.util.List;
 
 import DAO.interfaces.crudDAO;
+import Model.Fornecedor;
 import Model.Produtos;
 import javax.persistence.Query;
 
 import conexaoBancoDeDados.JPAUtil;
 
-public class ProdutosDAO implements crudDAO<Produtos>{
+public class ProdutosDAO {
     JPAUtil connection = new JPAUtil();
 
-    @Override
     public List<Produtos> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = connection.em.createQuery("select a from Produtos a", Produtos.class);
@@ -21,7 +21,6 @@ public class ProdutosDAO implements crudDAO<Produtos>{
         return produtos;
     }
 
-    @Override
     public Produtos findByName(String nome) {
         try {
             String consultaId = "from Produtos where nome=" + nome;
@@ -63,11 +62,10 @@ public class ProdutosDAO implements crudDAO<Produtos>{
         }
     }
 
-    @Override
-    public void insertDados(Produtos prod) {
+    public void insertDados(Fornecedor fornecedor, int quantidadeMinima, double preco, String nome, int quantidade) {
         try {
             System.out.println("======================================");
-
+            Produtos prod = new Produtos(fornecedor, quantidadeMinima, preco, nome, quantidade);
             connection.tx.begin();
             connection.em.persist(prod);
             connection.tx.commit();
@@ -80,7 +78,6 @@ public class ProdutosDAO implements crudDAO<Produtos>{
         }
     }
 
-    @Override
     public void updateDados(Produtos prod) {
         try {
             System.out.println("======================================");
@@ -97,7 +94,6 @@ public class ProdutosDAO implements crudDAO<Produtos>{
         }
     }
 
-    @Override
     public void deleteDados(Produtos prod) {
         try {
             Produtos prodDel = connection.em.getReference(Produtos.class, prod.getId());

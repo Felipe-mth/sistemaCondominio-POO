@@ -32,8 +32,7 @@ public class adicionarProdutoController {
 
     @FXML
     void adicionarProduto(MouseEvent event) {
-        Produtos prod = new Produtos();
-        ControladorProdutos.cadastrarProdutos(prod);
+
     }
 
     @FXML
