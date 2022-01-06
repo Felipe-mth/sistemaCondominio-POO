@@ -1,15 +1,16 @@
 package DAO.DaoClasse;
 
 import DAO.interfaces.crudDAO;
+import Model.Produtos;
 import Model.TransacaoProduto;
 import conexaoBancoDeDados.JPAUtil;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
-public class TransacaoProdutoDAO implements crudDAO<TransacaoProduto>{
+public class TransacaoProdutoDAO {
     JPAUtil connection = new JPAUtil();
 
-    @Override
     public List<TransacaoProduto> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = connection.em.createQuery("select a from TransacaoProduto a", TransacaoProduto.class);
@@ -19,7 +20,6 @@ public class TransacaoProdutoDAO implements crudDAO<TransacaoProduto>{
         return transacaoProdutos;
     }
 
-    @Override
     public TransacaoProduto findByName(String nome) {
         return null;
     }
@@ -44,11 +44,10 @@ public class TransacaoProdutoDAO implements crudDAO<TransacaoProduto>{
         }
     }
 
-    @Override
-    public void insertDados(TransacaoProduto transacaoProduto) {
+    public void insertDados(double valor, String descricao, ArrayList<Produtos> produtos) {
         try {
             System.out.println("======================================");
-
+            TransacaoProduto transacaoProduto = new TransacaoProduto();
             connection.tx.begin();
             connection.em.persist(transacaoProduto);
             connection.tx.commit();
@@ -61,7 +60,6 @@ public class TransacaoProdutoDAO implements crudDAO<TransacaoProduto>{
         }
     }
 
-    @Override
     public void updateDados(TransacaoProduto transacaoProduto) {
         try {
             System.out.println("======================================");
@@ -78,7 +76,6 @@ public class TransacaoProdutoDAO implements crudDAO<TransacaoProduto>{
         }
     }
 
-    @Override
     public void deleteDados(TransacaoProduto transacaoProduto) {
         try {
             TransacaoProduto transacaoProdutoDel = connection.em.getReference(TransacaoProduto.class, transacaoProduto.getId());

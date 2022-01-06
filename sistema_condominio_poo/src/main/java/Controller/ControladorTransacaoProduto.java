@@ -1,15 +1,17 @@
 package Controller;
 
 import DAO.DaoClasse.TransacaoProdutoDAO;
+import Model.Produtos;
 import Model.TransacaoProduto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorTransacaoProduto {
     TransacaoProdutoDAO transacaoProdutos = new TransacaoProdutoDAO();
 
-    public void cadastrarTransacaoProduto(TransacaoProduto transacaoProdutos) {
-        this.transacaoProdutos.insertDados(transacaoProdutos);
+    public void cadastrarTransacaoProduto(double valor, String descricao, ArrayList<Produtos> produtos) {
+        this.transacaoProdutos.insertDados(valor, descricao, produtos);
     }
 
     public void atualizarTransacaoProduto(TransacaoProduto transacaoProdutos) {

@@ -1,15 +1,15 @@
 package DAO.DaoClasse;
 
 import DAO.interfaces.crudDAO;
+import Model.Morador;
 import Model.TransacaoMoradores;
 import conexaoBancoDeDados.JPAUtil;
 import javax.persistence.Query;
 import java.util.List;
 
-public class TransacaoMoradorDAO implements crudDAO<TransacaoMoradores>{
+public class TransacaoMoradorDAO {
     JPAUtil connection = new JPAUtil();
 
-    @Override
     public List<TransacaoMoradores> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = connection.em.createQuery("select a from TransacaoMoradores a", TransacaoMoradores.class);
@@ -19,7 +19,6 @@ public class TransacaoMoradorDAO implements crudDAO<TransacaoMoradores>{
         return transacaoMoradores;
     }
 
-    @Override
     public TransacaoMoradores findByName(String nome) {
         return null;
     }
@@ -44,11 +43,10 @@ public class TransacaoMoradorDAO implements crudDAO<TransacaoMoradores>{
         }
     }
 
-    @Override
-    public void insertDados(TransacaoMoradores transacaoMorador) {
+    public void insertDados(double valor, String descricao, Morador morador) {
         try {
             System.out.println("======================================");
-
+            TransacaoMoradores transacaoMorador = new TransacaoMoradores(valor, descricao, morador);
             connection.tx.begin();
             connection.em.persist(transacaoMorador);
             connection.tx.commit();
@@ -61,7 +59,6 @@ public class TransacaoMoradorDAO implements crudDAO<TransacaoMoradores>{
         }
     }
 
-    @Override
     public void updateDados(TransacaoMoradores transacaoMorador) {
         try {
             System.out.println("======================================");
@@ -78,7 +75,6 @@ public class TransacaoMoradorDAO implements crudDAO<TransacaoMoradores>{
         }
     }
 
-    @Override
     public void deleteDados(TransacaoMoradores transacaoMorador) {
         try {
             TransacaoMoradores transacaoMoradorDel = connection.em.getReference(TransacaoMoradores.class, transacaoMorador.getId());
