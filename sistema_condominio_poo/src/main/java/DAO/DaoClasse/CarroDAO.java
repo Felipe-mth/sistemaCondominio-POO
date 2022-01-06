@@ -63,10 +63,10 @@ public class CarroDAO implements crudDAO<Carro> {
         }
     }
 
-    public void insertDados(Carro carro) {
+    public void insertDados(String placa, String modelo, Morador dono) {
         try {
             System.out.println("======================================");
-
+            Carro carro = new Carro(placa, modelo, dono);
             connection.tx.begin();
             connection.em.persist(carro);
             connection.tx.commit();

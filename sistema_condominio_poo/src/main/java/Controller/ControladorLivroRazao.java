@@ -8,9 +8,10 @@ import java.util.List;
 public class ControladorLivroRazao {
     livroRazaoDAO livroRazao = new livroRazaoDAO();
 
-    public void cadastrarLivroRazao(livroRazao livroRazao) {
-        this.livroRazao.insertDados(livroRazao);
+    public void cadastrarLivroRazao(int mes,String criadoPor, double montante) {
+        this.livroRazao.insertDados(mes, criadoPor, montante);
     }
+
 
     public void atualizarLivroRazao(livroRazao livroRazao) {
         this.livroRazao.updateDados(livroRazao);
