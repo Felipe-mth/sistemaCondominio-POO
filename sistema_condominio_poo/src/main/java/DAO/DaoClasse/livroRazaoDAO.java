@@ -21,10 +21,10 @@ public class livroRazaoDAO implements crudDAO<livroRazao>{
     }
 
     @Override
-    public void insertDados(livroRazao livroRazao) {
+    public void insertDados(int mes,String criadoPor, double montante) {
         try {
             System.out.println("======================================");
-
+            livroRazao livroRazao = new livroRazao(mes, criadoPor, montante);
             connection.tx.begin();
             connection.em.persist(livroRazao);
             connection.tx.commit();

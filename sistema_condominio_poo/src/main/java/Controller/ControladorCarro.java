@@ -8,8 +8,8 @@ import java.util.List;
 public class ControladorCarro {
     CarroDAO carros = new CarroDAO();
 
-    public void cadastrarCarro(Carro carros) {
-        this.carros.insertDados(carros);
+    public void cadastrarCarro(String placa, String modelo, Morador dono) {
+        this.carros.insertDados(placa, modelo, dono);
     }
 
     public void atualizarCarro(Carro carros) {
