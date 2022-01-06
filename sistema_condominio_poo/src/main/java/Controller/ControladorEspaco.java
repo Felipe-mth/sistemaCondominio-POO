@@ -8,10 +8,10 @@ import java.util.Date;
 import java.util.List;
 
 public class ControladorEspaco {
-    EspacoDAO espaco = new EspacoDAO();
+    static EspacoDAO espaco = new EspacoDAO();
 
-    public void cadastrarEspaco(Date data, Morador morador) {
-        this.espaco.insertDados(data, morador);
+    public static void cadastrarEspaco(Date data, Morador morador) {
+        espaco.insertDados(data, morador);
     }
 
     public void atualizarEspaco(Espaco espaco) {

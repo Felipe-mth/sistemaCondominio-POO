@@ -47,7 +47,7 @@ public class TransacaoProdutoDAO {
     public void insertDados(double valor, String descricao, ArrayList<Produtos> produtos) {
         try {
             System.out.println("======================================");
-            TransacaoProduto transacaoProduto = new TransacaoProduto();
+            TransacaoProduto transacaoProduto = new TransacaoProduto(valor, descricao, produtos);
             connection.tx.begin();
             connection.em.persist(transacaoProduto);
             connection.tx.commit();

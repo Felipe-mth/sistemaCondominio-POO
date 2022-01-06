@@ -48,7 +48,7 @@ public class EspacoDAO {
     public void insertDados(Date data, Morador morador) {
         try {
             System.out.println("======================================");
-            Espaco espaco = new Espaco();
+            Espaco espaco = new Espaco(data, morador);
             connection.tx.begin();
             connection.em.persist(espaco);
             connection.tx.commit();
