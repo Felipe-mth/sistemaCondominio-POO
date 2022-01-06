@@ -7,10 +7,10 @@ import Model.Endereco;
 
 
 public class ControladorFornecedor {
-    FornecedorDAO fornecedor = new FornecedorDAO();
+    static FornecedorDAO fornecedor = new FornecedorDAO();
 
-    public void cadastrarFornecedor(String cpfCNPJ, String telefone, String nome, Endereco endereco) {
-        this.fornecedor.insertDados(cpfCNPJ, telefone, nome, endereco);
+    public static void cadastrarFornecedor(String cpfCNPJ, String telefone, String nome, Endereco endereco) {
+        fornecedor.insertDados(cpfCNPJ, telefone, nome, endereco);
     }
 
     public void atualizarFornecedor(Fornecedor fornecedor) {
