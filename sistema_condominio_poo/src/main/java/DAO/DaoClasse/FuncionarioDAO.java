@@ -11,10 +11,12 @@ import javax.persistence.Query;
 
 import conexaoBancoDeDados.JPAUtil;
 
-public class FuncionarioDAO implements crudDAO<Funcionario>{
+
+import Model.Endereco;
+public class FuncionarioDAO {
     JPAUtil connection = new JPAUtil();
     
-    @Override
+    
     public List<Funcionario> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = connection.em.createQuery("select a from Funcionario a", Funcionario.class);
@@ -24,7 +26,7 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
         return funcionarios;
     }
 
-    @Override
+   
     public Funcionario findByName(String nome) {
         try {
             String consultaId = "from Funcionario where nome=" + nome;
@@ -66,13 +68,13 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
         }
     }
 
-    @Override
-    public void insertDados(Funcionario func) {
+    
+    public void insertDados(String cpf, Endereco endereco, String cargo, double salario, String turno, String telefone, String nome) {
         try {
             System.out.println("======================================");
-
+            Funcionario funci = new Funcionario(cpf, endereco, cargo, salario, turno, telefone, nome);
             connection.tx.begin();
-            connection.em.persist(func);
+            connection.em.persist(funci);
             connection.tx.commit();
             connection.em.close();
 
@@ -83,7 +85,7 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
         }
     }
 
-    @Override
+
     public void updateDados(Funcionario func) {
         try {
             System.out.println("======================================");
@@ -100,7 +102,7 @@ public class FuncionarioDAO implements crudDAO<Funcionario>{
         }
     }
 
-    @Override
+    
     public void deleteDados(Funcionario func) {
         try {
             Funcionario funcionarioDel = connection.em.getReference(Funcionario.class, func.getId());
