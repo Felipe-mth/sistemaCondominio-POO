@@ -1,6 +1,7 @@
 package View.ControllersJavaFX.Produtos;
 
 import Controller.ControladorProdutos;
+import Model.Fornecedor;
 import Model.Produtos;
 import View.ControllersJavaFX.SceneController;
 import javafx.fxml.FXML;
@@ -32,7 +33,8 @@ public class adicionarProdutoController {
 
     @FXML
     void adicionarProduto(MouseEvent event) {
-
+        Fornecedor forn = new Fornecedor();
+        ControladorProdutos.cadastrarProdutos(forn, Integer.parseInt(quantidadeMinimaProduto.getText()), Integer.parseInt(precoProduto.getText()), nomeProduto.getText(), Integer.parseInt(quantidadeProduto.getText()));
     }
 
     @FXML

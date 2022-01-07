@@ -116,7 +116,7 @@ public class telaInicialProdutosController implements Initializable {
                 System.out.println(rs.getString(1));
             }
         } catch (SQLException e) {
-
+            e.printStackTrace();
         }
     }
 }
