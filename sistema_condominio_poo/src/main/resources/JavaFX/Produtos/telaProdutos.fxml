@@ -82,7 +82,7 @@
       <AnchorPane prefHeight="400.0" prefWidth="529.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="35.0" layoutY="67.0" stroke="BLACK" strokeType="INSIDE" width="376.0" />
-            <ListView layoutX="24.0" layoutY="92.0" prefHeight="278.0" prefWidth="401.0" style="-fx-background-color: #f2f7fc; -fx-background-radius: 20; -fx-border-color: Black; -fx-border-radius: 20;" />
+            <ListView fx:id="listaProdutosCadastrados" layoutX="24.0" layoutY="92.0" prefHeight="278.0" prefWidth="401.0" style="-fx-background-color: #f2f7fc; -fx-background-radius: 20; -fx-border-color: Black; -fx-border-radius: 20;" />
             <Label layoutX="165.0" layoutY="72.0" text="Todos os produtos" textFill="WHITE">
                <font>
                   <Font size="14.0" />
