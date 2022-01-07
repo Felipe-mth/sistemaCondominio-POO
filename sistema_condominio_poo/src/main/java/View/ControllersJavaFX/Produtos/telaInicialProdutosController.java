@@ -100,7 +100,7 @@ public class telaInicialProdutosController implements Initializable {
         Connection Conn = null;
 
         try {
-            Conn = DriverManager.getConnection("jdbc:mysql://", "root", "");
+            Conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/condominiopoo", "root", "");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
