@@ -118,6 +118,5 @@ public class telaInicialProdutosController implements Initializable {
         } catch (SQLException e) {
 
         }
-
     }
 }
