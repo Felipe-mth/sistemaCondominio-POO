@@ -9,10 +9,10 @@ import javax.persistence.Query;
 
 import conexaoBancoDeDados.JPAUtil;
 
-public class ApartamentosDAO implements crudDAO<Apartamentos>{
+public class ApartamentosDAO {
     JPAUtil connection = new JPAUtil();
 
-    @Override
+   
     public List<Apartamentos> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q =  connection.em.createQuery("select a from Apartamentos a", Apartamentos.class);
@@ -22,7 +22,7 @@ public class ApartamentosDAO implements crudDAO<Apartamentos>{
         return apartamentos;
     }
 
-    @Override
+    
     public Apartamentos findByName(String nome) {
         return null;
     }
@@ -47,11 +47,10 @@ public class ApartamentosDAO implements crudDAO<Apartamentos>{
         }
     }
 
-    @Override
-    public void insertDados(Apartamentos apart) {
+    public void insertDados(int numeroApartamento, int andar,  int bloco) {
         try {
             System.out.println("======================================");
-
+            Apartamentos apart = new Apartamentos(numeroApartamento, andar, bloco);
             connection.tx.begin();
             connection.em.persist(apart);
             connection.tx.commit();
@@ -64,7 +63,7 @@ public class ApartamentosDAO implements crudDAO<Apartamentos>{
         }  
     }
 
-    @Override
+   
     public void updateDados(Apartamentos apart) {
         try {
             System.out.println("======================================");
@@ -81,7 +80,7 @@ public class ApartamentosDAO implements crudDAO<Apartamentos>{
         }
     }
 
-    @Override
+   
     public void deleteDados(Apartamentos apart) {
         try {
             Apartamentos apartamentoDel = connection.em.getReference(Apartamentos.class, apart.getnumeroDoApartamento());

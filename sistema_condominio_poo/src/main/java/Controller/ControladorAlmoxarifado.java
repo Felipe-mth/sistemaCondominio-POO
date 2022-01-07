@@ -2,14 +2,15 @@ package Controller;
 
 import DAO.DaoClasse.AlmoxarifadoDAO;
 import Model.Almoxarifado;
+import Model.Funcionario;
 
 import java.util.List;
 
 public class ControladorAlmoxarifado {
-    AlmoxarifadoDAO almoxarifado = new AlmoxarifadoDAO();
+    static AlmoxarifadoDAO almoxarifado = new AlmoxarifadoDAO();
 
-    public void cadastrarAlmoxarifado(Almoxarifado almoxarifado) {
-        this.almoxarifado.insertDados(almoxarifado);
+    public static void cadastrarAlmoxarifado(Funcionario funcionario, String telefone, String email) {
+       almoxarifado.insertDados(funcionario, telefone, email);
     }
 
     public void atualizarAlmoxarifado(Almoxarifado almoxarifado) {

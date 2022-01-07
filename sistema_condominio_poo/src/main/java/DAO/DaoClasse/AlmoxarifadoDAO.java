@@ -2,6 +2,7 @@ package DAO.DaoClasse;
 
 import DAO.interfaces.crudDAO;
 import Model.Almoxarifado;
+import Model.Funcionario;
 import conexaoBancoDeDados.JPAUtil;
 
 import javax.persistence.Query;
@@ -45,11 +46,11 @@ public class AlmoxarifadoDAO implements crudDAO<Almoxarifado> {
         return null;
     }
 
-    @Override
-    public void insertDados(Almoxarifado almoxarifado) {
+
+    public void insertDados(Funcionario funcionario, String telefone, String email) {
         try {
             System.out.println("======================================");
-
+            Almoxarifado almoxarifado = new Almoxarifado(funcionario, telefone, email);
             connection.tx.begin();
             connection.em.persist(almoxarifado);
             connection.tx.commit();

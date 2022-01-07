@@ -6,10 +6,10 @@ import Model.Apartamentos;
 import java.util.List;
 
 public class ControladorApartamentos {
-    ApartamentosDAO apartamentos = new ApartamentosDAO();
+    static ApartamentosDAO apartamentos = new ApartamentosDAO();
 
-    public void cadastrarApartamentos(Apartamentos apartamentos) {
-        this.apartamentos.insertDados(apartamentos);
+    public static void cadastrarApartamentos(int numeroApartamento, int andar,  int bloco) {
+        apartamentos.insertDados(numeroApartamento, andar, bloco);
     }
 
     public void atualizarApartamentos(Apartamentos apartamentos) {
