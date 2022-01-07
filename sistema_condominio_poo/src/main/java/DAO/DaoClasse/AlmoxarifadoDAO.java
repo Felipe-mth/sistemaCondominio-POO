@@ -8,10 +8,9 @@ import conexaoBancoDeDados.JPAUtil;
 import javax.persistence.Query;
 import java.util.List;
 
-public class AlmoxarifadoDAO implements crudDAO<Almoxarifado> {
+public class AlmoxarifadoDAO {
     JPAUtil connection = new JPAUtil();
 
-    @Override
     public List<Almoxarifado> findAll() {
         System.out.println("-----------CONSULTA--------------");
         Query q = connection.em.createQuery("select a from Almoxarifado a", Almoxarifado.class);
@@ -41,7 +40,6 @@ public class AlmoxarifadoDAO implements crudDAO<Almoxarifado> {
         }
     }
 
-    @Override
     public Almoxarifado findByName(String nome) {
         return null;
     }
@@ -63,7 +61,6 @@ public class AlmoxarifadoDAO implements crudDAO<Almoxarifado> {
         }
     }
 
-    @Override
     public void updateDados(Almoxarifado almoxarifado) {
         try {
             System.out.println("======================================");
@@ -80,7 +77,6 @@ public class AlmoxarifadoDAO implements crudDAO<Almoxarifado> {
         }
     }
 
-    @Override
     public void deleteDados(Almoxarifado almoxarifado) {
         try {
             Almoxarifado almoxarifadoDel = connection.em.getReference(Almoxarifado.class, almoxarifado.getId());
